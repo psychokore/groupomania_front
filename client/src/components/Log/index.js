@@ -5,21 +5,23 @@ import SignUpForm from "./SignUpForm";
 const Log = () =>{
     const [signUpModal, setSignUpModal] = useState(false);
     const [signInModal, setSignInModal] = useState(true);
-    const handleModals = (e) => {
-        if (e.target.id === "register") {
-            setSignUpModal(true);
-            setSignInModal(false);
-        } else if (e.target.id === "login") {
+    
+    const showSignInModal = () => {
             setSignUpModal(false);
             setSignInModal(true);
-        }
     }
+
+    const showSignUpModal = () => {
+        setSignUpModal(true);
+        setSignInModal(false);
+    }
+
     return (
     <div className="connection-form">
         <div className="form-container">
             <ul>
-                <li onClick={handleModals} id="login">Connexion</li>
-                <li onClick={handleModals} id="register" >S'inscrire</li>
+                <li onClick={showSignInModal} id="login">Connexion</li>
+                <li onClick={showSignUpModal} id="register" >S'inscrire</li>
             </ul>
             {signUpModal && <SignUpForm />}
             {signInModal && <SignInForm />}
