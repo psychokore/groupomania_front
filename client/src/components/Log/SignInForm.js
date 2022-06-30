@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SignInForm = () =>{
   const [email, setEmail] = useState('');
@@ -17,12 +17,16 @@ const SignInForm = () =>{
 
     fetch(url,{
       method: "POST",
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      headers: {
+        "Accept" : "application/json",
+        "Content-Type" : "application/json",
+    }
     })
     .then((res) => {
-      if (res.body.errors){
-        emailError.innerHTML = res.body.errors.email;
-        passwordError.innerHTML = res.body.errors.password;
+      if (res.data.errors){
+        emailError.innerHTML = res.data.errors.email;
+        passwordError.innerHTML = res.data.errors.password;
       } else {
         window.location = '/';
       }
