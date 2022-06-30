@@ -2,7 +2,7 @@ import React from "react";
 import Log from "../components/Log";
 
 
-const login = () =>{
+const Login = () =>{
   return (
     <div className="profil-page">
       <div className="log-container">
@@ -15,4 +15,4 @@ const login = () =>{
   );
 };
 
-export default login
+export default Login

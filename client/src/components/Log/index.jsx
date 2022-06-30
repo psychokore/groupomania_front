@@ -23,8 +23,8 @@ const Log = () =>{
                 <li onClick={showSignInModal} id="login">Connexion</li>
                 <li onClick={showSignUpModal} id="register" >S'inscrire</li>
             </ul>
-            {signUpModal && <SignUpForm />}
-            {signInModal && <SignInForm />}
+            {signUpModal && <SignInForm />}
+            {signInModal && <SignUpForm />}
         </div>
     </div>
 
