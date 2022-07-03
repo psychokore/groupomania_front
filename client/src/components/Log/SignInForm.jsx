@@ -3,11 +3,11 @@ import React, { useState } from "react";
 const SignInForm = () =>{
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [hasError, setHasError] = useState (false)
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const emailError = document.querySelector('.email.error');
-    const passwordError = document.querySelector('.password.error');
+
 
     const url = 'http://localhost:3000/api/auth/login';
     const data = {
@@ -24,11 +24,8 @@ const SignInForm = () =>{
     }
     })
     .then((res) => {
-      if (res.data.errors){
-        emailError.innerHTML = res.data.errors.email;
-        passwordError.innerHTML = res.data.errors.password;
-      } else {
-        window.location = '/';
+      if (res.status !== 200) {
+        return setHasError(true);
       }
     })
     .catch ((err) => {
@@ -43,24 +40,24 @@ const SignInForm = () =>{
       <br/>
       <input 
         type='text' 
-        name='email' 
-        id='email' 
+        name='email'  
         onChange={(e) => setEmail(e.target.value)} 
         value={email}
       />
-      <div className="email error"></div>
       <br/>
 
       <label htmlFor="password"> Mot de passe </label>
       <br/>
       <input 
         type='password' 
-        name='password' 
-        id='password' 
+        name='password'  
         onChange={(e) => setPassword(e.target.value)} 
         value={password}
       />
-      <div className="password error"></div>
+      {hasError && (
+        <div className="error">Les identifiants sont incorrects.</div>
+      )}
+      
       <br/>
 
       <input type='submit' value='Connexion' />
