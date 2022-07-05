@@ -6,16 +6,25 @@ import SignUpForm from "./SignUpForm";
 const Log = ( {signup, signin} ) =>{
     const [signUpModal, setSignUpModal] = useState(signup);
     const [signInModal, setSignInModal] = useState(signin);
+
+    const [signInButtonModal, setSignInButtonModal] = useState(false);
+    const [signUpButtonModal, setSignUpButtonModal] = useState(true);
     
     const showSignInModal = () => {
             setSignUpModal(false);
             setSignInModal(true);
+            setSignInButtonModal(true);
+            setSignUpButtonModal(false);
+
     }
 
     const showSignUpModal = () => {
         setSignUpModal(true);
         setSignInModal(false);
+        setSignInButtonModal(true);
+        setSignUpButtonModal(false);
     }
+
 
     return (
     <div className="connection-form">
@@ -24,13 +33,19 @@ const Log = ( {signup, signin} ) =>{
             {signInModal && <SignInForm />}
         </div>
         <div className="button contaimer">
-            <p>Déjà un compte?</p>
-            <button onClick={showSignInModal} id='login'>Se connecter</button>
+            {signInButtonModal && (
+            <div>
+                <p>Déjà un compte?</p>
+                <button onClick={showSignInModal} id='login'>Se connecter</button>  
+            </div>
+            )}
+            {signUpButtonModal && (
+            <div>
             <p>Pas encore inscrit?</p>
             <button onClick={showSignUpModal} id='login'>S'inscrire</button>
+            </div>
+            )}
         </div>
-         
-
     </div>
 
 
