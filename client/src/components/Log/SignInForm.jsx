@@ -34,34 +34,34 @@ const SignInForm = () =>{
   };
   
   return (
-    <form action="" onSubmit={handleLogin} id='sign-up-form'>
+      <form action="" onSubmit={handleLogin} id='sign-up-form'>
       
-      <label htmlFor="email"> Email</label>
-      <br/>
-      <input 
-        type='text' 
-        name='email'  
-        onChange={(e) => setEmail(e.target.value)} 
-        value={email}
-      />
-      <br/>
+        <label htmlFor="email"> Email</label>
+        <br/>
+        <input 
+          type='text' 
+          name='email'  
+          onChange={(e) => setEmail(e.target.value)} 
+          value={email}
+        />
+        <br/>
 
-      <label htmlFor="password"> Mot de passe </label>
-      <br/>
-      <input 
-        type='password' 
-        name='password'  
-        onChange={(e) => setPassword(e.target.value)} 
-        value={password}
-      />
-      {hasError && (
-        <div className="error">Les identifiants sont incorrects.</div>
-      )}
+        <label htmlFor="password"> Mot de passe </label>
+        <br/>
+        <input 
+         type='password' 
+          name='password'  
+          onChange={(e) => setPassword(e.target.value)} 
+          value={password}
+        />
+        {hasError && (
+         <div className="error">Les identifiants sont incorrects.</div>
+        )}
       
-      <br/>
+        <br/>
 
-      <input type='submit' value='Connexion' />
-    </form>
+        <input type='submit' value='Connexion' />
+        </form>
   );
 };
 

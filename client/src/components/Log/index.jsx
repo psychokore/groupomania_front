@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
 
+
 const Log = ( {signup, signin} ) =>{
     const [signUpModal, setSignUpModal] = useState(signup);
     const [signInModal, setSignInModal] = useState(signin);
@@ -19,13 +20,17 @@ const Log = ( {signup, signin} ) =>{
     return (
     <div className="connection-form">
         <div className="form-container">
-            <ul>
-                <li onClick={showSignInModal} id="login">Connexion</li>
-                <li onClick={showSignUpModal} id="register" >S'inscrire</li>
-            </ul>
             {signUpModal && <SignUpForm />}
             {signInModal && <SignInForm />}
         </div>
+        <div className="button contaimer">
+            <p>Déjà un compte?</p>
+            <button onClick={showSignInModal} id='login'>Se connecter</button>
+            <p>Pas encore inscrit?</p>
+            <button onClick={showSignUpModal} id='login'>S'inscrire</button>
+        </div>
+         
+
     </div>
 
 
