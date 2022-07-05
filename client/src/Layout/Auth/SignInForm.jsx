@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import postConnexion from "../../API/auth";
+
 
 const SignInForm = () =>{
   const [email, setEmail] = useState('');
@@ -8,30 +10,17 @@ const SignInForm = () =>{
   const handleLogin = (e) => {
     e.preventDefault();
 
-
-    const url = `${process.env.REACT_APP_API_URL}auth/login`;
-    const data = {
-      email: email,
-      password: password
-    };
-
-    fetch(url,{
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Accept" : "application/json",
-        "Content-Type" : "application/json",
-    }
-    })
-    .then((res) => {
-      if (res.status !== 200) {
-        return setHasError(true);
-      }
-    })
-    .catch ((err) => {
-      console.log(err);
-    });
-  };
+    postConnexion(email, password)
+      .then((res) => {
+        if (res.status !== 200) {
+          return setHasError(true);
+        }
+      })
+      .catch ((err) => {
+        console.log(err);
+      });
+  }
+  
   
   return (
       <form action="" onSubmit={handleLogin} id='sign-up-form'>
@@ -64,5 +53,6 @@ const SignInForm = () =>{
         </form>
   );
 };
+
 
 export default SignInForm
