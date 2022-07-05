@@ -9,7 +9,7 @@ const SignInForm = () =>{
     e.preventDefault();
 
 
-    const url = 'http://localhost:3000/api/auth/login';
+    const url = `${process.env.REACT_APP_API_URL}auth/login`;
     const data = {
       email: email,
       password: password

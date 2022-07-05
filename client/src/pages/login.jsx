@@ -1,5 +1,5 @@
 import React from "react";
-import Log from "../Layout/Log";
+import Log from "../Layout/Auth";
 
 
 const Login = () =>{
