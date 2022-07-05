@@ -32,17 +32,17 @@ const Log = ( {signup, signin} ) =>{
             {signUpModal && <SignUpForm />}
             {signInModal && <SignInForm />}
         </div>
-        <div className="button contaimer">
+        <div className="button-container">
             {signInButtonModal && (
-            <div>
+            <div className="logbutton">
                 <p>Déjà un compte?</p>
                 <button onClick={showSignInModal} id='login'>Se connecter</button>  
             </div>
             )}
             {signUpButtonModal && (
-            <div>
+            <div className="logbutton">
             <p>Pas encore inscrit?</p>
-            <button onClick={showSignUpModal} id='login'>S'inscrire</button>
+            <button onClick={showSignUpModal} className='button'>S'inscrire</button>
             </div>
             )}
         </div>

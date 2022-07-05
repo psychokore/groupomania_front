@@ -23,21 +23,23 @@ const SignInForm = () =>{
   
   
   return (
-      <form action="" onSubmit={handleLogin} id='sign-up-form'>
+      <form action="" onSubmit={handleLogin} id='sign-in-form'>
       
-        <label htmlFor="email"> Email</label>
-        <br/>
+        <label htmlFor="email">Email</label>
+        
         <input 
+          className="textarea"
           type='text' 
           name='email'  
           onChange={(e) => setEmail(e.target.value)} 
           value={email}
         />
-        <br/>
+        
 
-        <label htmlFor="password"> Mot de passe </label>
-        <br/>
-        <input 
+        <label htmlFor="password">Mot de passe</label>
+        
+        <input
+         className="textarea"
          type='password' 
           name='password'  
           onChange={(e) => setPassword(e.target.value)} 
@@ -47,9 +49,8 @@ const SignInForm = () =>{
          <div className="error">Les identifiants sont incorrects.</div>
         )}
       
-        <br/>
 
-        <input type='submit' value='Connexion' />
+        <input className="button" type='submit' value='Connexion' />
         </form>
   );
 };
