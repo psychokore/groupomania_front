@@ -36,7 +36,7 @@ const Log = ( {signup, signin} ) =>{
             {signInButtonModal && (
             <div className="logbutton">
                 <p>Déjà un compte?</p>
-                <button onClick={showSignInModal} id='login'>Se connecter</button>  
+                <button onClick={showSignInModal} className='button'>Se connecter</button>  
             </div>
             )}
             {signUpButtonModal && (
