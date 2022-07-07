@@ -29,7 +29,7 @@ const SignInForm = () =>{
         if (res.status !== 200) {
           return setHasError(true);
         } else {
-          navigate('../home', {replace: true});
+          navigate('../', {replace: true});
         }
       })
       .catch ((err) => {
