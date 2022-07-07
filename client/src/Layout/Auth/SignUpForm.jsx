@@ -86,11 +86,11 @@ const SignUpForm = () =>{
           value={password}
         />
         {hasError && (
-         <div className="error">Les identifiants sont incorrects.</div>
+         <div className="error">Saisie incorrecte.</div>
         )}
       
 
-        <input className="button" type='submit' value='Iscription' />
+        <input className="button" type='submit' value='Inscription' />
         </form>
   );
 };
