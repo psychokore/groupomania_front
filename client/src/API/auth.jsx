@@ -11,8 +11,23 @@ async function postConnexion (email, password){
     }
 })
 }
+/*const url = 'http://localhost:3000/api/auth/signup';
+    const data = {
+      email: email,
+      firstname: firstname,
+      lastname: lastname,
+      password: password
+    };
 
-
+    fetch(url,{
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Accept" : "application/json",
+        "Content-Type" : "application/json",
+      }
+    })
+*/
 export default postConnexion
 
 
