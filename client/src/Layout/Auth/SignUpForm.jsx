@@ -45,7 +45,7 @@ const SignUpForm = () =>{
   return (
     <form action="" onSubmit={handleSignUp} id='sign-up-form'>
 
-        <label htmlFor="firstname">Nom</label>
+        <label htmlFor="firstname">Prénom</label>
         
         <input 
           className="textarea"
@@ -55,7 +55,7 @@ const SignUpForm = () =>{
           value={firstname}
         />
 
-        <label htmlFor="lastname">Prenom</label>
+        <label htmlFor="lastname">Nom</label>
         
         <input 
           className="textarea"
