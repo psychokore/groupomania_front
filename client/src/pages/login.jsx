@@ -1,15 +1,16 @@
 import React from "react";
-import Log from "../components/Log";
+import Log from "../Layout/Auth";
 
 
 const Login = () =>{
   return (
     <div className="profil-page">
       <div className="log-container">
-        <Log />
         <div className="img-container">
           <img src="./img/icon-left-font-monochrome-white.png" alt="logo groupomania"/>
-        </div>
+        </div> 
+
+        <Log signin={true} signup={false} />
       </div>
     </div>
   );
