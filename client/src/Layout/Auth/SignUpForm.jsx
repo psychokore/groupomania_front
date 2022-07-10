@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import postInscription from "../../API/auth";
+//import postSignup from "../../API/auth";
 import {useNavigate} from 'react-router-dom';
 
 const SignUpForm = () =>{
