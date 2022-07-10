@@ -1,6 +1,6 @@
 import axios from "axios";
 
-async function postConnexion (email, password){
+export async function postConnexion (email, password){
     axios({
     method: "post",
     url:`http://localhost:3000/api/auth/login`,
@@ -9,6 +9,20 @@ async function postConnexion (email, password){
         email,
         password
     }
+})
+}
+
+export async function postSignup (email, password){
+  axios({
+  method: "post",
+  url:`http://localhost:3000/api/auth/signup`,
+  withCredentials: true,
+  data: {
+      email,
+      password,
+      firstname,
+      lastname
+  }
 })
 }
 /*const url = 'http://localhost:3000/api/auth/signup';
@@ -28,7 +42,7 @@ async function postConnexion (email, password){
       }
     })
 */
-export default postConnexion
+
 
 
 

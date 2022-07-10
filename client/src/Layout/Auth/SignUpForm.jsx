@@ -10,7 +10,7 @@ const SignUpForm = () =>{
   const [hasError, setHasError] = useState (false);
   const navigate = useNavigate();
 
-  const handleSignUp = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
 
     const url = 'http://localhost:3000/api/auth/signup';
@@ -43,17 +43,7 @@ const SignUpForm = () =>{
 
 
   return (
-    <form action="" onSubmit={handleSignUp} id='sign-up-form'>
-
-        <label htmlFor="firstname">Prénom</label>
-        
-        <input 
-          className="textarea"
-          type='text' 
-          name='firstname'  
-          onChange={(e) => setFirstname(e.target.value)} 
-          value={firstname}
-        />
+    <form action="" onSubmit={handleRegister} id='sign-up-form'>
 
         <label htmlFor="lastname">Nom</label>
         
@@ -63,6 +53,16 @@ const SignUpForm = () =>{
           name='lastname'  
           onChange={(e) => setLastname(e.target.value)} 
           value={lastname}
+        />
+        
+        <label htmlFor="firstname">Prénom</label>
+        
+        <input 
+          className="textarea"
+          type='text' 
+          name='firstname'  
+          onChange={(e) => setFirstname(e.target.value)} 
+          value={firstname}
         />
       
         <label htmlFor="email">Email</label>
