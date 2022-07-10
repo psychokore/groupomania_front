@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Login from "../Pages/login";
+import Login from "../Pages/Login";
 import Profil from "../Pages/Profil";
 import Home from "../Pages/Home";
 // import { UidProvider } from "../utils/context";
