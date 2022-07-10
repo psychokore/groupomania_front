@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import postSignup from "../../API/auth";
+import {postInscription, postConnexion} from "../../API/auth";
 import {useNavigate} from 'react-router-dom';
 
 const SignUpForm = () =>{
@@ -10,35 +10,20 @@ const SignUpForm = () =>{
   const [hasError, setHasError] = useState (false);
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    const url = 'http://localhost:3000/api/auth/signup';
-    const data = {
-      email: email,
-      firstname: firstname,
-      lastname: lastname,
-      password: password
-    };
-
-    fetch(url,{
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Accept" : "application/json",
-        "Content-Type" : "application/json",
+    const postSignup = await postInscription(email, password, firstname, lastname)
+    if (postSignup){
+      const postLogin = await postConnexion(email, password)
+      if (postLogin){
+        navigate('/');  
+      } else {
+        setHasError(true)
       }
-    })
-      .then((res) => {
-        if (res.status !== 200) {
-          return setHasError(true);
-        } else {
-          navigate('../', {replace: true});
-        }
-      })
-      .catch ((err) => {
-        console.log(err);
-      });
+    } else {
+      setHasError(true)
+    }
   }
 
 

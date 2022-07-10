@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import postConnexion from "../../API/auth";
+import {postConnexion} from "../../API/auth";
 import {useNavigate} from 'react-router-dom';
 
 const SignInForm = () =>{
@@ -8,33 +8,15 @@ const SignInForm = () =>{
   const [hasError, setHasError] = useState (false)
   const navigate = useNavigate()
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    const url = 'http://localhost:3000/api/auth/login';
-    const data = {
-      email: email,
-      password: password
-    };
-
-    fetch(url,{
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Accept" : "application/json",
-        "Content-Type" : "application/json",
+    const postLogin = await postConnexion(email, password)
+      if (postLogin){
+        navigate('/');  
+      } else {
+        setHasError(true)
       }
-    })
-      .then((res) => {
-        if (res.status !== 200) {
-          return setHasError(true);
-        } else {
-          navigate('../', {replace: true});
-        }
-      })
-      .catch ((err) => {
-        console.log(err);
-      });
   }
   
   
