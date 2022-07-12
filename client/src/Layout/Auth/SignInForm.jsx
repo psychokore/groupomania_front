@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import {postConnexion} from "../../API/auth";
+import {postConnexion} from "../../api/auth";
 import {useNavigate} from 'react-router-dom';
+//import { useDispatch } from "react-redux";
+
 
 const SignInForm = () =>{
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [hasError, setHasError] = useState (false)
-  const navigate = useNavigate()
+  const [hasError, setHasError] = useState (false);
+  const navigate = useNavigate();
+ // const dispatch = useDispatch();
+ 
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
