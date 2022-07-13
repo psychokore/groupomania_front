@@ -18,6 +18,8 @@ export const userSlice = createSlice({
 
 export const { login,} = userSlice.actions
 
-// export const selectUser = (state) => state.user
+// export const selectUserConnected = (state) => state.user.isConnected
+// export const selectUserAdmin = (state) => state.user.isAdmin
+
 
 export default userSlice.reducer
