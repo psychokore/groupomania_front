@@ -5,7 +5,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: {
     isConnected: false,
-    isAdmin: false
+    isAdmin: 0
   },
   reducers: {
     login: (state, action) => {

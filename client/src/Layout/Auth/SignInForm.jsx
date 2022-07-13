@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import {postConnexion} from "../../api/auth";
 import {useNavigate} from 'react-router-dom';
-//import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { login } from "../../slices/userSlice";
 
 
 const SignInForm = () =>{
@@ -9,7 +10,8 @@ const SignInForm = () =>{
   const [password, setPassword] = useState('');
   const [hasError, setHasError] = useState (false);
   const navigate = useNavigate();
- // const dispatch = useDispatch();
+  
+  const dispatch = useDispatch();
  
 
 
@@ -18,6 +20,16 @@ const SignInForm = () =>{
 
     const postLogin = await postConnexion(email, password)
       if (postLogin){
+        const userObj = localStorage.getItem("user");
+        const user = JSON.parse(userObj);
+
+
+        dispatch(
+          login({
+            isConnected: true,
+            isAdmin: user.isAdmin
+          })
+        )
         navigate('/');  
       } else {
         setHasError(true)
