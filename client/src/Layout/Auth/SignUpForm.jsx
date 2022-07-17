@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import {postInscription, postConnexion} from "../../api/auth";
 import {useNavigate} from 'react-router-dom';
 
+import { useDispatch } from "react-redux";
+import { login } from "../../slices/userSlice";
+
+
 const SignUpForm = () =>{
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -9,6 +13,7 @@ const SignUpForm = () =>{
   const [lastname, setLastname] = useState('');
   const [hasError, setHasError] = useState (false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -17,6 +22,12 @@ const SignUpForm = () =>{
     if (postSignup){
       const postLogin = await postConnexion(email, password)
       if (postLogin){
+        dispatch(
+          login({
+            token: postLogin.token,
+            isAdmin: postLogin.isAdmin
+          })
+        )
         navigate('/');  
       } else {
         setHasError(true)

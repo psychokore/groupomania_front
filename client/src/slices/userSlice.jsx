@@ -4,12 +4,13 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    isConnected: false,
-    isAdmin: 0
+    token: null,
+    isAdmin: false
   },
   reducers: {
     login: (state, action) => {
-      state.isConnected = action.payload.isConnected;
+      state.token = action.payload.token;
+      state.isAdmin = action.payload.isAdmin;
     },
   }
 })
@@ -18,7 +19,7 @@ export const userSlice = createSlice({
 
 export const { login,} = userSlice.actions
 
-// export const selectUserConnected = (state) => state.user.isConnected
+export const selectIsUserConnected = (state) => state.user.token !== null
 // export const selectUserAdmin = (state) => state.user.isAdmin
 
 

@@ -9,12 +9,8 @@ export async function postConnexion (email, password){
     }
   )
   .then((res) => {
-    
-    if (res.data.token) {
-      localStorage.setItem("user", JSON.stringify(res.data));
-    }
-    return res.data;
-    })
+    return res.data
+  })
   .catch (() => null)
 }
 

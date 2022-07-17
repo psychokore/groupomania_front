@@ -20,14 +20,10 @@ const SignInForm = () =>{
 
     const postLogin = await postConnexion(email, password)
       if (postLogin){
-        const userObj = localStorage.getItem("user");
-        const user = JSON.parse(userObj);
-
-
         dispatch(
           login({
-            isConnected: true,
-            isAdmin: user.isAdmin
+            token: postLogin.token,
+            isAdmin: postLogin.isAdmin
           })
         )
         navigate('/');  
