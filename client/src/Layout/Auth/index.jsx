@@ -13,8 +13,8 @@ const Log = ( {signup, signin} ) =>{
     const showSignInModal = () => {
             setSignUpModal(false);
             setSignInModal(true);
-            setSignInButtonModal(true);
-            setSignUpButtonModal(false);
+            setSignInButtonModal(false);
+            setSignUpButtonModal(true);
 
     }
 

@@ -95,3 +95,25 @@ img {
 .error {
     color: red;
 }
+#sign-up-form {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    label{
+        font-weight:bold;
+        text-align: center;
+        padding-bottom: 10px;
+        font-size: 1em;
+    }
+    .textarea {
+        background: $color-secondary;
+        height: 30px;
+        border-radius: 15px;
+        border: none;
+        margin-bottom: 20px;
+        font-size: 1em;
+        padding-left: 15px;
+    }
+
+}

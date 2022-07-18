@@ -1,40 +1,35 @@
 import React, { useState } from "react";
-//import postConnexion from "../../API/auth";
+import {postConnexion} from "../../api/auth";
 import {useNavigate} from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { login } from "../../slices/userSlice";
+
 
 const SignInForm = () =>{
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [hasError, setHasError] = useState (false)
-  const navigate = useNavigate()
+  const [hasError, setHasError] = useState (false);
+  const navigate = useNavigate();
+  
+  const dispatch = useDispatch();
+ 
 
-  const handleLogin = (e) => {
+
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    const url = 'http://localhost:3000/api/auth/login';
-    const data = {
-      email: email,
-      password: password
-    };
-
-    fetch(url,{
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Accept" : "application/json",
-        "Content-Type" : "application/json",
+    const postLogin = await postConnexion(email, password)
+      if (postLogin){
+        dispatch(
+          login({
+            token: postLogin.token,
+            isAdmin: postLogin.isAdmin
+          })
+        )
+        navigate('/');  
+      } else {
+        setHasError(true)
       }
-    })
-      .then((res) => {
-        if (res.status !== 200) {
-          return setHasError(true);
-        } else {
-          navigate('../', {replace: true});
-        }
-      })
-      .catch ((err) => {
-        console.log(err);
-      });
   }
   
   
