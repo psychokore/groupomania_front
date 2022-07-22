@@ -26,6 +26,10 @@ const PostCard = ({post}) => {
                 <div className='content-text'> {post.content} </div>
            </div>
 
+           <div className='interaction-container'>
+            
+           </div>
+
         </div>
     );
 };

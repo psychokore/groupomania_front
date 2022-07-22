@@ -1,0 +1,17 @@
+.feed-container {
+    background-color: $color-secondary;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.post-container {
+    border-radius: 30px;
+    border: solid black 1px;
+    box-shadow: 5px 5px 13px -2px $color-accent;
+    width: 50%;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
