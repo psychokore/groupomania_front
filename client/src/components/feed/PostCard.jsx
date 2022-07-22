@@ -27,7 +27,7 @@ const PostCard = ({post}) => {
            </div>
 
            <div className='interaction-container'>
-            
+
            </div>
 
         </div>
