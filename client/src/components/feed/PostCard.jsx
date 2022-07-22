@@ -24,9 +24,8 @@ const PostCard = ({post}) => {
 
            <div className='content-container'>
                 <div className='content-text'> {post.content} </div>
-                <div className='content-image'> mettre l'image </div>
            </div>
-           
+
         </div>
     );
 };
