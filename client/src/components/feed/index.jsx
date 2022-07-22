@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getPosts } from '../../api/posts';
-import PostCard from './PostCard';
+//import PostCard from './PostCard';
 
 
 const Feed = () => {
@@ -14,20 +14,15 @@ const Feed = () => {
     useEffect(() => {
         getAllPosts()
         .then ((res) => {
-            return res.data
+            setAllPosts(res.data)
         });
-        const dataPosts = getAllPosts.data
-        if (dataPosts) {
-            setAllPosts((prevState) => [...prevState, ...dataPosts])
-        }
+        
     }, [])
     
     
     return (
         <div className='feed-container'>
-            {allPosts.map((post) => (
-                <PostCard post={post} key={post._id} />
-            ))}
+            {allPosts.map((post) => <h2>{post.content}</h2>)}
         </div>
     );
 };
@@ -37,8 +32,8 @@ export default Feed
 
 
 /*
-{getAllPosts ? getAllPosts.map((post) => {
-                    return <PostCard post={post} key={post._id} />
-                }) : 'Nothing to load'} 
+{allPosts.map((post) => (
+                <PostCard post={post} key={post._id} />
+            ))}
 
 */
