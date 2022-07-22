@@ -1,23 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const PostCard = ({post}) => {
-    const [isLoading, setIsLoading] = useState(true);
-    const userData = useSelector((state) => state.userReducer);
+    
 
     useEffect(() => {
-        !userData.isEmpty && setIsLoading(false)
-    }, [userData])
+
+    })
 
 
 
 
     return (
-        <div className='post-container' key={post._id}>
-            {isLoading ? (
-                <i className='fas fa-spinner fa-spin'></i>
-            ) : <h2>Test</h2> }
+        <div className='post-container' key={post.postid}>
+
+           <div className='author-container'>
+            <FontAwesomeIcon icon="fa-regular fa-circle-user" />
+            <h2> {post.authorpseudo} </h2>
+            <h3> date de publication </h3>
+           </div>
+
+           <div className='content-container'>
+                <div className='content-text'> {post.content} </div>
+                <div className='content-image'> mettre l'image </div>
+           </div>
+           
         </div>
     );
 };

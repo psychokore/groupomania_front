@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getPosts } from '../../api/posts';
-//import PostCard from './PostCard';
+import PostCard from './PostCard';
 
 
 const Feed = () => {
@@ -22,7 +22,9 @@ const Feed = () => {
     
     return (
         <div className='feed-container'>
-            {allPosts.map((post) => <h2>{post.content}</h2>)}
+            {allPosts.map((post) => (
+            <PostCard post={post} key={post.postid} />
+            ))}
         </div>
     );
 };
