@@ -27,7 +27,14 @@ const PostCard = ({post}) => {
            </div>
 
            <div className='interaction-container'>
-
+                <div className='like-container'>
+                    <p>2</p>
+                    <FontAwesomeIcon icon="fa-regular fa-heart" />
+                </div>
+                <div className='comments-container'>
+                    <p>45</p>
+                    <FontAwesomeIcon icon="fa-regular fa-comments" />
+                </div>
            </div>
 
         </div>
