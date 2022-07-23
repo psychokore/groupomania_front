@@ -25,7 +25,7 @@ const PostCard = ({post}) => {
 
            <div className='content-container'>
                 <div className='content-text'> {post.content} </div>
-                
+                { post.imageurl !== null && <img src={post.imageurl} alt=''/> }
            </div>
 
            <div className='interaction-container'>
