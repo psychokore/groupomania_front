@@ -6,18 +6,19 @@ import PostCard from './PostCard';
 
 
 const Feed = () => {
-    //const [loadPost, setLoadPost] = useState(true);
     const [allPosts, setAllPosts] = useState([])
-
-    const getAllPosts = async () => await getPosts()
+    const [offset, setOffset] =  useState(0)
+    const [totalPages, setTotalPages] = useState(0)
+//incrementer setoffset a la fin de la page
+    const getAllPosts = async () => await getPosts(offset)
     
     useEffect(() => {
         getAllPosts()
         .then ((res) => {
-            setAllPosts(res.data)
+            setAllPosts([...allPosts, ...res.data])
         });
         
-    }, [])
+    }, [offset])
     
     
     return (

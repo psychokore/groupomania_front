@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const getPosts = () => {
+export const getPosts = (offset) => {
     return axios.get(
-        `http://localhost:3000/api/publication?offset=0&limit=10`
+        `http://localhost:3000/api/publication?offset=${offset}&limit=10`
         
     )
     .then((res) => {

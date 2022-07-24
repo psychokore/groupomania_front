@@ -15,7 +15,7 @@ const PostCard = ({post}) => {
 
 
     return (
-        <div className='post-container' key={post.postid}>
+        <div className='post-container'>
 
            <div className='author-container'>
             <FontAwesomeIcon icon="fa-regular fa-circle-user" />
