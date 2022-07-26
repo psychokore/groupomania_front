@@ -1,6 +1,6 @@
 .log-container {
     width: 100%;
-    padding-top: 3vw;  
+    margin-top: 3vw;
 }
 .connection-form {
     display: flex;
@@ -84,14 +84,13 @@
     justify-content: center;
     align-content: center;
     width: max-content;
-    img {
-        width: 300px;
-        height: 300px;
-    }
     
 }
 
-
+img {
+    width: 300px;
+    height: 300px;
+}
 
 .error {
     color: red;
