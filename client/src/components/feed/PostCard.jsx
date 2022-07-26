@@ -2,27 +2,16 @@ import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { dateParser } from './date';
-import { getComments } from '../../api/comment';
 import { useState } from 'react';
 import Comments from './Comments';
 
 
 
 const PostCard = ({post}) => {
-    const [allComments, setAllComments] = useState([]);
-    const [offset, setOffset] = useState(0);
-    const [commentsModal, setCommentsModal] = useState(false);
-
-    const postid = post.postid
-    const showCommentsModal = () =>  {
-        setCommentsModal(true)
-       }
     
-    const handleComments = async (e) => {
-       const loadComments =  await getComments(postid, offset);
-       setAllComments([...allComments, ...loadComments.data]);
-       showCommentsModal();
-    }
+    const [showComment, setShowComment] = useState(false);
+
+    
 
 
 
@@ -48,16 +37,33 @@ const PostCard = ({post}) => {
                 </div>
                 <div className='comments-container'>
                     <p>45</p>
-                    
-                        <FontAwesomeIcon icon="fa-regular fa-comments" onClick={handleComments} />
-                    
+                    <FontAwesomeIcon icon="fa-regular fa-comments" onClick={() => setShowComment(!showComment)} />
+                    {showComment && <Comments post={post} />}    
                 </div>
            </div>
-           {commentsModal && allComments.map((comment) => (
-            <Comments comment={comment} key={comment.commentid} />
-            ))}
+           
         </div>
     );
 };
 
 export default PostCard;
+
+
+/*
+const postid = post.postid
+    const showCommentsModal = () =>  {
+        setCommentsModal(true)
+       }
+    
+    const handleComments = async (e) => {
+       const loadComments =  await getComments(postid, offset);
+       setAllComments([...allComments, ...loadComments.data]);
+       showCommentsModal();
+    }
+
+
+{commentsModal && allComments.map((comment) => (
+            <Comments comment={comment} key={comment.commentid} />
+            ))}
+
+*/
