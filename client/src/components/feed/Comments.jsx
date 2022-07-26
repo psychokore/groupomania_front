@@ -29,11 +29,10 @@ const Comments = ({post}) => {
             <div className='comment' key={comment.commentid}>
                 <FontAwesomeIcon icon="fa-regular fa-circle-user" />
                 <div className='comment-content'>
-                    <h2> {comment.authorpseudo} </h2>
+                    <p className='comment-author'> {comment.authorpseudo} </p>
                     <p className='comment-text'> {comment.content} </p>
                 </div>
             </div>
-
             )})}
         </div>
     );

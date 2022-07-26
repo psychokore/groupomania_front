@@ -37,10 +37,10 @@ const PostCard = ({post}) => {
                 </div>
                 <div className='comments-container'>
                     <p>45</p>
-                    <FontAwesomeIcon icon="fa-regular fa-comments" onClick={() => setShowComment(!showComment)} />
-                    {showComment && <Comments post={post} />}    
+                    <FontAwesomeIcon icon="fa-regular fa-comments" onClick={() => setShowComment(!showComment)} />   
                 </div>
            </div>
+           {showComment && <Comments post={post} />} 
            
         </div>
     );
