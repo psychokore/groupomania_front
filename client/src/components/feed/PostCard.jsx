@@ -20,14 +20,11 @@ const PostCard = ({post}) => {
         const loadComments = async () => {
          const newComments = await getComments(postid, offset);
          setAllComments([...allComments, ...newComments.data]);
-         setTotalPages([newComments.pageCount])
+         setTotalPages(newComments.pageCount)
      };
          loadComments();
      }, [offset])
    
-
-    
-
 
 
 
@@ -47,16 +44,16 @@ const PostCard = ({post}) => {
 
            <div className='interaction-container'>
                 <div className='like-container'>
-                    <p>2</p>
+                    <p></p>
                     <FontAwesomeIcon icon="fa-regular fa-heart" />
                 </div>
                 <div className='comments-container'>
                     <p>{allComments.length}</p>
-                    <FontAwesomeIcon icon="fa-regular fa-comments" onClick={() => setShowComment(!showComment)} />   
+                    <FontAwesomeIcon icon="fa-regular fa-comments" onClick={() => setShowComment(!showComment)} className={showComment ? 'active' : ''}/>   
                 </div>
            </div>
            {showComment && allComments.map((comment) => (<Comments comment={comment} key={comment.commentid}/>))} 
-           
+        {/*offset et showcomment*/}
         </div>
     );
 };
