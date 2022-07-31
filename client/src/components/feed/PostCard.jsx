@@ -2,14 +2,29 @@ import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { dateParser } from './date';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Comments from './Comments';
+import { getComments } from '../../api/comment'
+
 
 
 
 const PostCard = ({post}) => {
-    
+    const [allComments, setAllComments] = useState([])
+    const [offset, setOffset] =  useState(0)
+    const [totalPages, setTotalPages] = useState(0)
     const [showComment, setShowComment] = useState(false);
+    const postid = post.postid
+
+    useEffect(() => {
+        const loadComments = async () => {
+         const newComments = await getComments(postid, offset);
+         setAllComments([...allComments, ...newComments.data]);
+         setTotalPages([newComments.pageCount])
+     };
+         loadComments();
+     }, [offset])
+   
 
     
 
@@ -36,11 +51,11 @@ const PostCard = ({post}) => {
                     <FontAwesomeIcon icon="fa-regular fa-heart" />
                 </div>
                 <div className='comments-container'>
-                    <p>45</p>
+                    <p>{allComments.length}</p>
                     <FontAwesomeIcon icon="fa-regular fa-comments" onClick={() => setShowComment(!showComment)} />   
                 </div>
            </div>
-           {showComment && <Comments post={post} />} 
+           {showComment && allComments.map((comment) => (<Comments comment={comment} key={comment.commentid}/>))} 
            
         </div>
     );
