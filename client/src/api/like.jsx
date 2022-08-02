@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getLikes = ( postid, offset) => {
+export const getLikes = ( postid) => {
     return axios.get(
         `http://localhost:3000/api/like/${postid}/`
     )

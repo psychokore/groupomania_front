@@ -6,12 +6,14 @@ import { useState, useEffect } from 'react';
 import Comments from './Comments';
 import { getComments } from '../../api/comment'
 import PostingComment from './PostingComment';
+import { getLikes } from '../../api/like';
 
 
 
 
 const PostCard = ({post}) => {
     const [allComments, setAllComments] = useState([])
+    const [allLikes, setAllLikes] = useState([])
     const [offset, setOffset] =  useState(0)
     const [totalPages, setTotalPages] = useState(0)
     const [showComment, setShowComment] = useState(false);
@@ -24,6 +26,11 @@ const PostCard = ({post}) => {
          setTotalPages(newComments.pageCount)
      };
          loadComments();
+         const loadLikes = async () => {
+            const newLikes = await getLikes(postid);
+            setAllLikes([...allLikes, newLikes.data])
+         };
+         loadLikes();
      }, [offset])
    
 
@@ -45,7 +52,7 @@ const PostCard = ({post}) => {
 
            <div className='interaction-container'>
                 <div className='like-container'>
-                    <p></p>
+                    <p>{allLikes.length}</p>
                     <FontAwesomeIcon icon="fa-regular fa-heart" />
                 </div>
                 <div className='comments-container'>
