@@ -2,19 +2,22 @@ import React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { postComment } from '../../api/comment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 
 const PostingComment = ({post}) => {
-    const [content, setContent] = useState('');
+    const [comment, setComment] = useState('');
 
-    const authorid = useSelector((state) => state.user.userId)
-    const postid = post.postId;
+    const userId = useSelector((state) => state.user.userId)
+    const id = post.postId;
+    const token = useSelector((state) => state.user.token)
     
 
     const handleComment = async (e) => {
         e.preventDefault();
 
-        const publishComment = await postComment(postid, authorid, content)
+        const publishComment = await postComment(id, userId, comment, token)
         
         
     }
@@ -26,11 +29,13 @@ const PostingComment = ({post}) => {
                 className='commentarea'
                 type='text'
                 name='comment'
-                onChange= {(e) => setContent(e.target.value)}
-                value={content}
+                onChange= {(e) => setComment(e.target.value)}
+                value={comment}
                 />
 
-        <input className="publish-comment" type='submit' value='' />
+        <button className="publish-comment" type='submit' value=''>
+            <FontAwesomeIcon icon="fa-regular fa-circle-right" />
+        </button>
         </form>
     );
 };

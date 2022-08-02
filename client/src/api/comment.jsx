@@ -12,14 +12,21 @@ export const getComments = ( postid, offset) => {
 
 
 
-export async function postComment (postid, authorid, content){
+export async function postComment (id, userId, comment, token){
     return await axios.post(
     `http://localhost:3000/api/comment/`,
     {
-        authorid,
-        content,
-        postid
-    }
+        comment
+    },
+    {headers: {
+        authorization: `Bearer ${token}`
+    },
+    params: {
+        id
+    },
+    auth: {
+        userId
+    }}
   )
   .then((res) => {
     return res.data
