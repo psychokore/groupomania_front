@@ -10,7 +10,7 @@ const PostingComment = ({post}) => {
     const [comment, setComment] = useState('');
 
     const userId = useSelector((state) => state.user.userId)
-    const postid = post.postId;
+    const postid = post.postid
     const token = useSelector((state) => state.user.token)
     
 
@@ -18,6 +18,7 @@ const PostingComment = ({post}) => {
         e.preventDefault();
 
         const publishComment = await postComment(postid, userId, comment, token)
+        
         
         
     }
