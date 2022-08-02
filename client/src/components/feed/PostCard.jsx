@@ -55,7 +55,7 @@ const PostCard = ({post}) => {
            </div>
            {showComment && allComments.map((comment) => (<Comments comment={comment} key={comment.commentid}/>))} 
            {showComment && <p className='show-more-comment' onClick={() => setOffset(offset + 1)}>Afficher plus de commentaire</p>/*offset et showcomment*/}
-           {showComment && <PostingComment />}
+           {showComment && <PostingComment post={post} />}
         </div>
     );
 };

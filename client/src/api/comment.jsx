@@ -10,11 +10,15 @@ export const getComments = ( postid, offset) => {
     .catch (() => null)
 }
 
-export async function publishComment (comment){
+
+
+export async function postComment (postid, authorid, content){
     return await axios.post(
-    `http://localhost:3000/api/comment/:id/comment`,
+    `http://localhost:3000/api/comment/`,
     {
-        comment
+        authorid,
+        content,
+        postid
     }
   )
   .then((res) => {
