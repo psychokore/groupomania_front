@@ -71,31 +71,50 @@
     width: 20%;
     justify-content: space-around;
     margin-left: 5px;
+    margin-bottom: 15px;
 }
 
 
 .like-container {
     display: flex;
+    height: 20px;
     .fa-heart {
         font-size: 20px;
-        padding-top: 15px;
-        padding-left: 10px;
+        padding: 5px;
         cursor: pointer;
-        
+        border-radius: 20px;  
+    }
+    p {
+        margin-top: 3px;
+        margin-right: 5px;
     }
 }
 
 .comments-container {
     display: flex;
+    height: 20px;
     .fa-comments {
         font-size: 20px;
-        padding-top: 15px;
-        padding-left: 10px;
+        padding: 5px;
         cursor: pointer;
-
+        border-radius: 20px;
+    }
+    p {
+        margin-top: 3px;
+        margin-right: 5px;
     }
 }
 
 .active {
-    color: red; 
+    background-color: $color-accent; 
+    color: $color-secondary;
+}
+
+.show-more-comment{
+    text-align: center;
+    font-size: 0.8em;
+    cursor: pointer;
+    &:hover {
+        text-decoration: solid underline;
+    }
 }

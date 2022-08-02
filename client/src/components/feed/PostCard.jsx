@@ -53,7 +53,7 @@ const PostCard = ({post}) => {
                 </div>
            </div>
            {showComment && allComments.map((comment) => (<Comments comment={comment} key={comment.commentid}/>))} 
-        {/*offset et showcomment*/}
+           {showComment && <p className='show-more-comment' onClick={() => setOffset(offset + 1)}>Afficher plus de commentaire</p>/*offset et showcomment*/}
         </div>
     );
 };
@@ -61,21 +61,3 @@ const PostCard = ({post}) => {
 export default PostCard;
 
 
-/*
-const postid = post.postid
-    const showCommentsModal = () =>  {
-        setCommentsModal(true)
-       }
-    
-    const handleComments = async (e) => {
-       const loadComments =  await getComments(postid, offset);
-       setAllComments([...allComments, ...loadComments.data]);
-       showCommentsModal();
-    }
-
-
-{commentsModal && allComments.map((comment) => (
-            <Comments comment={comment} key={comment.commentid} />
-            ))}
-
-*/
