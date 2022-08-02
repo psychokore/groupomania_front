@@ -22,7 +22,7 @@ export async function postComment (postid, userId, comment, token){
     {headers: {
         authorization : `Bearer ${token}`
     },
-}
+    }
   )
   .then((res) => {
     return res.data

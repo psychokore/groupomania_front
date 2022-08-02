@@ -30,6 +30,11 @@ const PostCard = ({post}) => {
          setTotalPages(newComments.pageCount)
      };
         loadComments();
+        const loadLikes = async () => {
+            const newLikes = await getLikes(postid,token);
+            setAllLikes([...allLikes, newLikes.data])
+         };
+         loadLikes();
      }, [offset])
    
 
@@ -71,10 +76,6 @@ export default PostCard;
 
 /*
          
-         const loadLikes = async () => {
-            const newLikes = await getLikes(postid);
-            setAllLikes([...allLikes, newLikes.data])
-         };
-         loadLikes();
+
 
          */
