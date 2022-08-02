@@ -24,6 +24,8 @@
     align-self: center;
     justify-self: flex-start;
     font-size: 1.3em;
+    cursor: pointer;
+
     
 }
 
@@ -43,6 +45,10 @@
         color: $color-secondary;
         font-size: 1em;
         text-align: center;
+        cursor: pointer;
+        &:hover{
+            text-shadow: 3px 3px 7px rgba(255,255,255,0.85);
+        }
     }
     .logout {
         justify-self: flex-end;
