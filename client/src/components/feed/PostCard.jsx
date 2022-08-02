@@ -5,6 +5,7 @@ import { dateParser } from './date';
 import { useState, useEffect } from 'react';
 import Comments from './Comments';
 import { getComments } from '../../api/comment'
+import PostingComment from './PostingComment';
 
 
 
@@ -54,6 +55,7 @@ const PostCard = ({post}) => {
            </div>
            {showComment && allComments.map((comment) => (<Comments comment={comment} key={comment.commentid}/>))} 
            {showComment && <p className='show-more-comment' onClick={() => setOffset(offset + 1)}>Afficher plus de commentaire</p>/*offset et showcomment*/}
+           {showComment && <PostingComment />}
         </div>
     );
 };
