@@ -1,6 +1,7 @@
 import axios from "axios";
 
-export const getComments = ( postid, offset) => {
+
+export const getComments = ( postid, offset, token, userId) => {
     return axios.get(
         `http://localhost:3000/api/comment/${postid}/comment?offset=${offset}&limit=10`
     )
@@ -12,17 +13,14 @@ export const getComments = ( postid, offset) => {
 
 
 
-export async function postComment (id, userId, comment, token){
+export async function postComment (postid, userId, comment, token){
     return await axios.post(
-    `http://localhost:3000/api/comment/`,
+    `http://localhost:3000/api/comment/${postid}`,
     {
         comment
     },
     {headers: {
-        authorization: `Bearer ${token}`
-    },
-    params: {
-        id
+        authorization : `Bearer ${token}`
     },
     auth: {
         userId

@@ -7,6 +7,7 @@ import Comments from './Comments';
 import { getComments } from '../../api/comment'
 import PostingComment from './PostingComment';
 import { getLikes } from '../../api/like';
+import { useSelector } from 'react-redux';
 
 
 
@@ -19,18 +20,16 @@ const PostCard = ({post}) => {
     const [showComment, setShowComment] = useState(false);
     const postid = post.postid
 
+    const token = useSelector((state) => state.user.token)
+    const userId = useSelector((state) => state.user.userId)
+
     useEffect(() => {
         const loadComments = async () => {
-         const newComments = await getComments(postid, offset);
+         const newComments = await getComments(postid, offset, token, userId);
          setAllComments([...allComments, ...newComments.data]);
          setTotalPages(newComments.pageCount)
      };
-         loadComments();
-         const loadLikes = async () => {
-            const newLikes = await getLikes(postid);
-            setAllLikes([...allLikes, newLikes.data])
-         };
-         loadLikes();
+        loadComments();
      }, [offset])
    
 
@@ -70,3 +69,12 @@ const PostCard = ({post}) => {
 export default PostCard;
 
 
+/*
+         
+         const loadLikes = async () => {
+            const newLikes = await getLikes(postid);
+            setAllLikes([...allLikes, newLikes.data])
+         };
+         loadLikes();
+
+         */
