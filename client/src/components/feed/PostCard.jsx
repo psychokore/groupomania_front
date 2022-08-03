@@ -28,6 +28,7 @@ const PostCard = ({post}) => {
          const newComments = await getComments(postid, offset, token, userId);
          setAllComments([...allComments, ...newComments.data]);
          setTotalPages(newComments.pageCount)
+         console.log(allComments.lenght)
      };
         loadComments();
         const loadLikes = async () => {
@@ -39,8 +40,13 @@ const PostCard = ({post}) => {
          
          
      }, [offset])
-   
 
+     const loadMoreComment = (offset, allComments) => {
+        if (offset + 1 > totalPages && allComments.lenght != undefined) 
+            return <p className='show-more-comment' onClick={() => setOffset(offset + 1)}>Afficher plus de commentaire</p>;
+        else  
+            return <p className='show-more-comment'>Fin des commentaires</p>;
+    }
 
 
     return (
@@ -68,7 +74,7 @@ const PostCard = ({post}) => {
                 </div>
            </div>
            {showComment && allComments.map((comment) => (<Comments comment={comment} key={comment.commentid}/>))} 
-           {showComment && <p className='show-more-comment' onClick={() => setOffset(offset + 1)}>Afficher plus de commentaire</p>/*offset et showcomment*/}
+           {showComment && <>{loadMoreComment(offset, allComments)}</> }
            {showComment && <PostingComment post={post} />}
         </div>
     );
@@ -77,8 +83,3 @@ const PostCard = ({post}) => {
 export default PostCard;
 
 
-/*
-         
-
-
-         */
