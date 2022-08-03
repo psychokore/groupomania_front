@@ -8,8 +8,8 @@ export const getLikes = (postid, token) => {
         },
         }
     )
-    .then ((res) => {
+    .then((res) => {
         return res.data
-    })
+      })
     .catch (() => null)
 }

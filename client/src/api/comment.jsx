@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-export const getComments = ( postid, offset, token, userId) => {
+export const getComments = ( postid, offset) => {
     return axios.get(
         `http://localhost:3000/api/comment/${postid}/comment?offset=${offset}&limit=10`
     )

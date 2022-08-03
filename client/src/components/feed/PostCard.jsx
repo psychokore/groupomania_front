@@ -32,9 +32,12 @@ const PostCard = ({post}) => {
         loadComments();
         const loadLikes = async () => {
             const newLikes = await getLikes(postid,token);
-            setAllLikes([...allLikes, newLikes.data])
+            console.log(newLikes.data)
+            setAllLikes([...allLikes, ...newLikes.data])
          };
          loadLikes();
+         
+         
      }, [offset])
    
 
