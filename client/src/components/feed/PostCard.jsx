@@ -45,7 +45,7 @@ const PostCard = ({post}) => {
         if (offset + 1 > totalPages && allComments.lenght != undefined) 
             return <p className='show-more-comment' onClick={() => setOffset(offset + 1)}>Afficher plus de commentaire</p>;
         else  
-            return <p className='show-more-comment'>Fin des commentaires</p>;
+            return <p className='no-more-comment'>Fin des commentaires</p>;
     }
 
 
