@@ -32,6 +32,7 @@ const PostingComment = ({post}) => {
                 name='comment'
                 onChange= {(e) => setComment(e.target.value)}
                 value={comment}
+                placeholder="Ajouter un commentaire..."
                 />
 
         <button className="publish-comment" type='submit' value=''>
