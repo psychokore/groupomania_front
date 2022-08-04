@@ -29,6 +29,7 @@ const PostModule = () => {
                     name='content' 
                     onChange={(e) => setContent(e.target.value)} 
                     value={content} 
+                    placeholder='Taper votre texte ici'
                 />
                 <label for='image' className='image-input'>
                     <FontAwesomeIcon icon="fa-regular fa-image" />
