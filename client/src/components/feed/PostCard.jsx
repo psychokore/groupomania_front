@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import Comments from './Comments';
 import { getComments } from '../../api/comment'
 import PostingComment from './PostingComment';
-import { getLikes } from '../../api/like';
+import { addLike, getLikes } from '../../api/like';
 import { useSelector } from 'react-redux';
 
 
@@ -18,8 +18,9 @@ const PostCard = ({post}) => {
     const [offset, setOffset] =  useState(0)
     const [totalPages, setTotalPages] = useState(0)
     const [showComment, setShowComment] = useState(false);
-    const postid = post.postid
 
+
+    const postid = post.postid
     const token = useSelector((state) => state.user.token)
     const userId = useSelector((state) => state.user.userId)
 
@@ -28,18 +29,20 @@ const PostCard = ({post}) => {
          const newComments = await getComments(postid, offset, token, userId);
          setAllComments([...allComments, ...newComments.data]);
          setTotalPages(newComments.pageCount)
-         console.log(allComments.lenght)
-     };
-        loadComments();
+        };
+        loadComments(); 
+     }, [offset])
+
+
+     useEffect(() => {
         const loadLikes = async () => {
             const newLikes = await getLikes(postid,token);
-            console.log(newLikes.data)
             setAllLikes([...allLikes, ...newLikes.data])
          };
          loadLikes();
-         
-         
-     }, [offset])
+     }, [])
+
+
 
      const loadMoreComment = (offset, allComments) => {
         if (offset + 1 > totalPages && allComments.lenght != undefined) 
@@ -48,7 +51,12 @@ const PostCard = ({post}) => {
             return <p className='no-more-comment'>Fin des commentaires</p>;
     }
 
+    const handleLike = async (e) => {
+        e.preventDefault();
 
+        const addLikeHere = await addLike(postid, token);
+        
+    }
     return (
         <div className='post-container'>
 
@@ -66,7 +74,7 @@ const PostCard = ({post}) => {
            <div className='interaction-container'>
                 <div className='like-container'>
                     <p>{allLikes.length}</p>
-                    <FontAwesomeIcon icon="fa-regular fa-heart" />
+                    <FontAwesomeIcon icon="fa-regular fa-heart" onClick={handleLike} />
                 </div>
                 <div className='comments-container'>
                     <p>{allComments.length}</p>
