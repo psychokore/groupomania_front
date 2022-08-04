@@ -16,7 +16,6 @@ const PostModule = () => {
     const publication = {
         authorid: userId,
         content,
-
     }
 
 
