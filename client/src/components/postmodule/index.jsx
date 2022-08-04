@@ -22,21 +22,25 @@ const PostModule = () => {
     
     return (
         <div className='postmodule-container'>
-            <h1 className='post-title'> Publiez quelque chose</h1>
             <form action='' onSubmit={handlePost} id='publication-form'>
+                <h1 className='post-title'> Publiez quelque chose</h1>
                 <input 
                     className='post-content' 
                     name='content' 
                     onChange={(e) => setContent(e.target.value)} 
                     value={content} 
                 />
-                <input 
+                <label for='image' className='image-input'>
+                    <FontAwesomeIcon icon="fa-regular fa-image" />
+                    <input 
+                    className='post-image'
                     type='file'
                     id='image'
                     name='image'
                     accept='image/png, image/jpeg, image/gif, image/jpg'
                     onChange={(e) => setImage(e.target.files[0])}
                 />
+                </label>
                 <input className='post-button' type='submit' value='Publiez' />
             </form>
         </div>
