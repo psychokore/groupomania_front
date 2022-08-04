@@ -18,7 +18,7 @@ const Feed = () => {
     
     const handleScroll = (event) => {
         const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-        if (scrollHeight - scrollTop === clientHeight) {
+        if (scrollHeight - scrollTop === clientHeight && offset + 1 !== totalPages) {
             setOffset (prev => prev + 1);
 
         }
@@ -31,7 +31,7 @@ const Feed = () => {
         setLoading(true);
         const newPosts = await getPosts(offset);
         setAllPosts([...allPosts, ...newPosts.data]);
-        setTotalPages([newPosts.pageCount])
+        setTotalPages(newPosts.pageCount)
         setLoading(false)
     };
         loadPosts();

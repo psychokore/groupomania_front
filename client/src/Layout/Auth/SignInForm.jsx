@@ -22,6 +22,7 @@ const SignInForm = () =>{
       if (postLogin){
         dispatch(
           login({
+            userId: postLogin.userId,
             token: postLogin.token,
             isAdmin: postLogin.isAdmin
           })
