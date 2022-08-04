@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { publishPublication } from '../../api/posts';
 
 
 
@@ -12,11 +13,17 @@ const PostModule = () => {
 
     const userId = useSelector((state) => state.user.userId)
     const token = useSelector((state) => state.user.token)
+    const publication = {
+        authorid: userId,
+        content,
 
+    }
 
 
     const handlePost = async (e) => {
         e.preventDefault();
+
+        const publishPost = await publishPublication(publication, token)
     }
     
     
@@ -31,7 +38,7 @@ const PostModule = () => {
                     value={content} 
                     placeholder='Taper votre texte ici'
                 />
-                <label for='image' className='image-input'>
+                <label htmlFor='image' className='image-input'>
                     <FontAwesomeIcon icon="fa-regular fa-image" />
                     <input 
                     className='post-image'
