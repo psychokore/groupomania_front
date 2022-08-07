@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { getPosts } from '../../api/posts.jsx';
 
 import PostCard from './PostCard';
+import PostModule from '../postmodule/index.jsx';
 
 
 
@@ -37,14 +38,20 @@ const Feed = () => {
         loadPosts();
     }, [offset])
     
+    const onNewPublication = (publication) => {
+        setAllPosts([publication, ...allPosts])
+    }
     
     return (
+        <>
         <div className='feed-container' onScroll={handleScroll}>
             {allPosts.map((post) => (
             <PostCard post={post} key={post.postid} />
             ))}
             {loading && <div className='loading'>Loading ...</div>}  
         </div>
+        <PostModule onNewPublication={onNewPublication} />
+        </>
         
     );
 };

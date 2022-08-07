@@ -11,14 +11,16 @@ export const getPosts = (offset) => {
     .catch (() => null)
 }
 
-export async function publishPublication (publication, token){
+export async function publishPublication (content,image, token){
     return await axios.post(
     `http://localhost:3000/api/publication`,
     {
-        publication
+        content,
+        image
     },
     {headers: {
-        authorization : `Bearer ${token}`
+        authorization : `Bearer ${token}`,
+        'content-type' : 'multipart/form-data'
     },
     }
   )

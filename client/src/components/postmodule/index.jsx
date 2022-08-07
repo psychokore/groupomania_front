@@ -7,24 +7,31 @@ import { publishPublication } from '../../api/posts';
 
 
 
-const PostModule = () => {
+const PostModule = ({onNewPublication}) => {
     const [content, setContent] = useState('')
     const [image, setImage] = useState(null)
 
     const userId = useSelector((state) => state.user.userId)
     const token = useSelector((state) => state.user.token)
-    const publication = {
-        authorid: userId,
-        content,
-    }
+    
 
 
     const handlePost = async (e) => {
         e.preventDefault();
-
-        const publishPost = await publishPublication(publication, token)
+        const publishPost = await publishPublication(content,image, token)
+        onNewPublication(publishPost)
     }
+
+
     
+    const handleImage = (file) => {
+        console.log(file)
+        if (['image/png', 'image/jpeg', 'image/gif', 'image/jpg'].includes(file.type))
+            {
+                setImage(file)
+            }
+            //ajouter l'erreur
+    }
     
     return (
         <div className='postmodule-container'>
@@ -45,7 +52,7 @@ const PostModule = () => {
                     id='image'
                     name='image'
                     accept='image/png, image/jpeg, image/gif, image/jpg'
-                    onChange={(e) => setImage(e.target.files[0])}
+                    onChange={(e) => handleImage(e.target.files[0])}
                 />
                 </label>
                 <input className='post-button' type='submit' value='Publiez' />
