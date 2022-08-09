@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import Comments from './Comments';
 import { getComments } from '../../api/comment'
 import PostingComment from './PostingComment';
-import { addLike, getLikes } from '../../api/like';
+import { addLike, deleteLike, getLikes } from '../../api/like';
 import { useSelector } from 'react-redux';
 
 
@@ -46,7 +46,7 @@ const PostCard = ({post}) => {
 
      const loadMoreComment = (offset, allComments) => {
         if (offset + 1 > totalPages && allComments.lenght != undefined) 
-            return <p className='show-more-comment' onClick={() => setOffset(offset + 1)}>Afficher plus de commentaire</p>;
+            return <p className='show-more-comment' onClick={() => setOffset(offset + 1)}>Afficher des commentaires plus anciens</p>;
         else  
             return <p className='no-more-comment'>Fin des commentaires</p>;
     }
@@ -56,6 +56,23 @@ const PostCard = ({post}) => {
         const addLikeHere = await addLike(postid, token);
         onNewLike(addLikeHere)
         
+    }
+
+    const handleDislike = async (e) => {
+        e.preventDefault();
+        const dislike = await deleteLike(postid, token);
+        onNewLike(dislike)
+        
+    }
+
+
+    const likeDislike = (allLikes, userId) => {
+        let like = allLikes.find (like => like.userId === userId) 
+        if (like !== undefined)
+            return <FontAwesomeIcon icon="fa-solid fa-heart" onClick={handleDislike}/>
+        else
+            return <FontAwesomeIcon icon="fa-regular fa-heart" onClick={handleLike} />
+                     
     }
 
     const onNewComment = (comment) => {
@@ -84,7 +101,7 @@ const PostCard = ({post}) => {
            <div className='interaction-container'>
                 <div className='like-container'>
                     <p>{allLikes.length}</p>
-                    <FontAwesomeIcon icon="fa-regular fa-heart" onClick={handleLike} />
+                    {likeDislike(allLikes, userId)}
                 </div>
                 <div className='comments-container'>
                     <p>{allComments.length}</p>

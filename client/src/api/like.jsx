@@ -26,3 +26,15 @@ export async function addLike (postid, token){
   })
   .catch (() => null)
 }
+
+export async function deleteLike (postid, token) {
+  return await axios.delete(
+    `http://localhost:3000/api/like/${postid}`, {
+        headers: { Authorization : `Bearer ${token}`},
+    }
+  )
+  .then((res) => {
+    return res.data
+  })
+  .catch (() => null)
+}
