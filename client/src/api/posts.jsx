@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { instance } from './axiosclient';
 
 export const getPosts = (offset) => {
     return axios.get(

@@ -53,10 +53,20 @@ const PostCard = ({post}) => {
 
     const handleLike = async (e) => {
         e.preventDefault();
-
         const addLikeHere = await addLike(postid, token);
+        onNewLike(addLikeHere)
         
     }
+
+    const onNewComment = (comment) => {
+        setAllComments([comment, ...allComments])
+    }
+
+    const onNewLike = (like) => {
+        setAllLikes([like, ...allLikes])
+    }
+
+
     return (
         <div className='post-container'>
 
@@ -83,7 +93,7 @@ const PostCard = ({post}) => {
            </div>
            {showComment && allComments.map((comment) => (<Comments comment={comment} key={comment.commentid}/>))} 
            {showComment && <>{loadMoreComment(offset, allComments)}</> }
-           {showComment && <PostingComment post={post} />}
+           {showComment && <PostingComment post={post} onNewComment={onNewComment}/>}
         </div>
     );
 };

@@ -14,7 +14,7 @@ const Feed = () => {
     const [totalPages, setTotalPages] = useState(0)
     const [loading, setLoading] = useState(true)
 
-//incrementer setoffset a la fin de la page
+
     
     
     const handleScroll = (event) => {

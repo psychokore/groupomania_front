@@ -11,7 +11,7 @@ const PostModule = ({onNewPublication}) => {
     const [content, setContent] = useState('')
     const [image, setImage] = useState(null)
 
-    const userId = useSelector((state) => state.user.userId)
+    
     const token = useSelector((state) => state.user.token)
     
 

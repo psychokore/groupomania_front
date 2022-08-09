@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 
-const PostingComment = ({post}) => {
+const PostingComment = ({post, onNewComment}) => {
     const [comment, setComment] = useState('');
 
     const userId = useSelector((state) => state.user.userId)
@@ -17,10 +17,9 @@ const PostingComment = ({post}) => {
     const handleComment = async (e) => {
         e.preventDefault();
 
-        const publishComment = await postComment(postid, userId, comment, token)
-        
-        
-        
+        const publishComment = await postComment(postid, comment, token)
+        onNewComment(publishComment)
+  
     }
 
 
