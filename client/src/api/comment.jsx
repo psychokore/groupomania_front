@@ -29,3 +29,15 @@ export async function postComment (postid, comment, token){
   })
   .catch (() => null)
 }
+
+export async function deleteComment (postid, token) {
+    return await axios.delete(
+      `http://localhost:3000/api/comment/${postid}`, {
+          headers: { Authorization : `Bearer ${token}`},
+      }
+    )
+    .then((res) => {
+      return res.data
+    })
+    .catch (() => null)
+  }
