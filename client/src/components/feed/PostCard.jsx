@@ -8,7 +8,7 @@ import { getComments } from '../../api/comment'
 import PostingComment from './PostingComment';
 import { addLike, deleteLike, getLikes } from '../../api/like';
 import { useSelector } from 'react-redux';
-import { updatePublication} from '../../api/posts'
+import { deletePublication, updatePublication} from '../../api/posts'
 
 
 
@@ -90,6 +90,12 @@ const PostCard = ({post}) => {
     const updateItem = async (e) => {
         e.preventDefault();
         const updatePost = await updatePublication(postid, textUpdate, token)
+        setIsUpdated(false)
+    }
+
+    const deleteItem = async (e) => {
+        e.preventDefault();
+        const deletePost = await deletePublication(postid, token)
     }
 
 
@@ -123,6 +129,12 @@ const PostCard = ({post}) => {
                         <FontAwesomeIcon icon="fa-regular fa-pen-to-square" onClick={() => setIsUpdated(!isUpdated)}/>
                     </div>
                 )}
+                {userId === post.authorid && (
+                    <div className='delete-container'>
+                        <FontAwesomeIcon icon="fa-regular fa-trash-can" onClick={deleteItem}/>
+                    </div>
+                )}
+
            </div>
 
            <div className='interaction-container'>

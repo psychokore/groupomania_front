@@ -48,3 +48,18 @@ export async function updatePublication (postid, textUpdate, token){
   })
   .catch (() => null)
 }
+
+export async function deletePublication (postid, token){
+    return await axios.delete(
+    `http://localhost:3000/api/publication/${postid}`,
+    {headers: {
+        authorization : `Bearer ${token}`,
+        'content-type' : 'multipart/form-data'
+    },
+    }
+  )
+  .then((res) => {
+    return res.data
+  })
+  .catch (() => null)
+}
