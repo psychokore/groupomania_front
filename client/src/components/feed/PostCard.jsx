@@ -127,7 +127,7 @@ const PostCard = ({post}) => {
                 { post.imageurl !== null && <img src={post.imageurl} alt=''/> }
                 {userId === post.authorid && (
                     <div className='update-container'>
-                        <FontAwesomeIcon icon="fa-regular fa-pen-to-square" onClick={() => setIsUpdated(!isUpdated)}/>
+                        <FontAwesomeIcon icon="fa-regular fa-pen-to-square" onClick={() => setIsUpdated(!isUpdated)} />
                         {isAdmin ? '':<FontAwesomeIcon icon="fa-regular fa-trash-can" onClick={deleteItem}/>}
                     </div>
                 )}
