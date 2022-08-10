@@ -8,6 +8,7 @@ import { getComments } from '../../api/comment'
 import PostingComment from './PostingComment';
 import { addLike, deleteLike, getLikes } from '../../api/like';
 import { useSelector } from 'react-redux';
+import { updatePublication} from '../../api/posts'
 
 
 
@@ -18,6 +19,9 @@ const PostCard = ({post}) => {
     const [offset, setOffset] =  useState(0)
     const [totalPages, setTotalPages] = useState(0)
     const [showComment, setShowComment] = useState(false);
+    const [isUpdated, setIsUpdated] = useState(false);
+    const [textUpdate, setTextUpdate] = useState(null);
+
 
 
     const postid = post.postid
@@ -83,6 +87,11 @@ const PostCard = ({post}) => {
         setAllLikes([like, ...allLikes])
     }
 
+    const updateItem = async (e) => {
+        e.preventDefault();
+        const updatePost = await updatePublication(postid, textUpdate, token)
+    }
+
 
     return (
         <div className='post-container'>
@@ -94,8 +103,26 @@ const PostCard = ({post}) => {
            </div>
 
            <div className='content-container'>
-                <div className='content-text'> {post.content} </div>
+                {isUpdated ===false && <div className='content-text'> {post.content} </div>} 
+                {isUpdated && (
+                    <div className='update-post'>
+                        <textarea
+                            defaultValue={post.message}
+                            onChange={(e) => setTextUpdate(e.target.value)}
+                        />
+                        <div className='button-uptade'>
+                            <button className='updated-button' onClick={updateItem}>
+                                Valider modification
+                            </button>
+                        </div>
+                    </div>   
+                )}
                 { post.imageurl !== null && <img src={post.imageurl} alt=''/> }
+                {userId === post.authorid && (
+                    <div className='update-container'>
+                        <FontAwesomeIcon icon="fa-regular fa-pen-to-square" onClick={() => setIsUpdated(!isUpdated)}/>
+                    </div>
+                )}
            </div>
 
            <div className='interaction-container'>

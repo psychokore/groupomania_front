@@ -30,3 +30,21 @@ export async function publishPublication (content,image, token){
   })
   .catch (() => null)
 }
+
+export async function updatePublication (postid, textUpdate, token){
+    return await axios.put(
+    `http://localhost:3000/api/publication/${postid}`,
+    {
+        textUpdate
+    },
+    {headers: {
+        authorization : `Bearer ${token}`,
+        'content-type' : 'multipart/form-data'
+    },
+    }
+  )
+  .then((res) => {
+    return res.data
+  })
+  .catch (() => null)
+}
