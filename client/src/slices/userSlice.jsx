@@ -28,7 +28,7 @@ export const { login, logout} = userSlice.actions
 
 export const selectIsUserConnected = (state) => state.user.token !== null
 export const selectUser = (state) => state.user.userId !== null
-// export const selectUserAdmin = (state) => state.user.isAdmin
+export const selectUserAdmin = (state) => state.user.isAdmin
 
 
 export default userSlice.reducer

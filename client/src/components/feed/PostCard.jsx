@@ -27,6 +27,7 @@ const PostCard = ({post}) => {
     const postid = post.postid
     const token = useSelector((state) => state.user.token)
     const userId = useSelector((state) => state.user.userId)
+    const isAdmin = useSelector((state) => state.user.isAdmin)
 
     useEffect(() => {
         const loadComments = async () => {
@@ -113,13 +114,13 @@ const PostCard = ({post}) => {
                 {isUpdated && (
                     <div className='update-post'>
                         <textarea
+                            className='update-textarea'
                             defaultValue={post.message}
                             onChange={(e) => setTextUpdate(e.target.value)}
+                            placeholder = {post.content}
                         />
-                        <div className='button-uptade'>
-                            <button className='updated-button' onClick={updateItem}>
-                                Valider modification
-                            </button>
+                        <div className='button-update'>
+                            <FontAwesomeIcon icon="fa-regular fa-circle-right" onClick={updateItem}/>
                         </div>
                     </div>   
                 )}
@@ -127,13 +128,16 @@ const PostCard = ({post}) => {
                 {userId === post.authorid && (
                     <div className='update-container'>
                         <FontAwesomeIcon icon="fa-regular fa-pen-to-square" onClick={() => setIsUpdated(!isUpdated)}/>
+                        {isAdmin ? '':<FontAwesomeIcon icon="fa-regular fa-trash-can" onClick={deleteItem}/>}
                     </div>
                 )}
-                {userId === post.authorid && (
+                {isAdmin && (
                     <div className='delete-container'>
                         <FontAwesomeIcon icon="fa-regular fa-trash-can" onClick={deleteItem}/>
                     </div>
                 )}
+                
+                
 
            </div>
 
