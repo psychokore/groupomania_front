@@ -30,4 +30,16 @@ export async function postInscription (email, password, firstname, lastname){
 }
 
 
-//${process.env.REACT_APP_API_URL}
+export async function getUserData (token) {
+  return axios.get(
+      `http://localhost:3000/api/auth/data`,
+      {headers: {
+          authorization : `Bearer ${token}`
+      },
+      }
+  )
+  .then((res) => {
+      return res.data
+    })
+  .catch (() => null)
+}

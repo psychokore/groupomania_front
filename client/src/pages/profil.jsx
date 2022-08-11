@@ -1,9 +1,13 @@
 import React from "react";
+import NavBar from "../components/navBar/NavBar";
+import UserProfil from "../components/userProfil/UserProfil"
+
 
 const Profil = () =>{
   return (
     <div>
-        Voici le profil
+        <NavBar />
+        <UserProfil />
     </div>
   );
 };
