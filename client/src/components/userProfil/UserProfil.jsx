@@ -27,8 +27,7 @@ const UserProfil = () => {
                 <p className='label'>Email</p>
                 <p className='data'>dupont.michel@gmail.com</p>
             </div>
-
-            
+            <button className='delete-profil'>Supprimer votre profil</button> 
         </div>
     );
 };
