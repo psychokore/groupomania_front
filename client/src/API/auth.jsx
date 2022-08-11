@@ -43,3 +43,15 @@ export async function getUserData (token) {
     })
   .catch (() => null)
 }
+
+export async function deleteUserAccount (token) {
+  return await axios.delete(
+    `http://localhost:3000/api/auth/delete`, {
+        headers: { Authorization : `Bearer ${token}`},
+    }
+  )
+  .then((res) => {
+    return res.data
+  })
+  .catch (() => null)
+}

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { getUserData } from '../../api/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteUserAccount, getUserData } from '../../api/auth';
+import { logout } from '../../slices/userSlice';
+
 
 const UserProfil = () => {
     const [userData, setUserData] = useState()
     const [isLoading, setIsLoading] = useState(true)
     const token = useSelector((state) => state.user.token)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const loadUserData = async () => {
@@ -17,7 +20,12 @@ const UserProfil = () => {
         loadUserData()
     }, [])
 
-    
+    const deleteAccount = async (e) => {
+        e.preventDefault();
+        const deleteUser = await deleteUserAccount(token)
+        dispatch(logout())
+
+    }
 
 
     return (
@@ -32,7 +40,7 @@ const UserProfil = () => {
                 <p className='label'>Email</p>
                 <p className='data'>{userData.email}</p>
             </div>
-            <button className='delete-profil'>Supprimer votre profil</button>
+            <button className='delete-profil' onClick={deleteAccount}>Supprimer votre profil</button>
             </>}
         </div>
     );
