@@ -41,12 +41,23 @@ const Feed = () => {
     const onNewPublication = (publication) => {
         setAllPosts([publication, ...allPosts])
     }
-    
+
+    const onPublicationUpdated = (postid, text) => {
+        setAllPosts(publications => {
+            const publication = publications.find (publication => publication.postid === postid)
+            if (publication) {
+                publication.content = text
+            }
+            return publications
+        })
+    }
+
+
     return (
         <>
         <div className='feed-container' onScroll={handleScroll}>
             {allPosts.map((post) => (
-            <PostCard post={post} key={post.postid} />
+            <PostCard post={post} key={post.postid} onPublicationUpdate={onPublicationUpdated} />
             ))}
             {loading && <div className='loading'>Loading ...</div>}  
         </div>

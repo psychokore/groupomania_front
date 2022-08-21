@@ -13,7 +13,7 @@ import { deletePublication, updatePublication} from '../../api/posts'
 
 
 
-const PostCard = ({post}) => {
+const PostCard = ({post, onPublicationUpdate}) => {
     const [allComments, setAllComments] = useState([])
     const [allLikes, setAllLikes] = useState([])
     const [offset, setOffset] =  useState(0)
@@ -73,7 +73,7 @@ const PostCard = ({post}) => {
 
     const likeDislike = (allLikes, userId) => {
         let like = allLikes.find (like => like.userId === userId) 
-        if (like !== undefined)
+        if (!like)
             return <FontAwesomeIcon icon="fa-solid fa-heart" onClick={handleDislike}/>
         else
             return <FontAwesomeIcon icon="fa-regular fa-heart" onClick={handleLike} />
@@ -92,6 +92,7 @@ const PostCard = ({post}) => {
         e.preventDefault();
         const updatePost = await updatePublication(postid, textUpdate, token)
         setIsUpdated(false)
+        onPublicationUpdate(postid, textUpdate)
     }
 
     const deleteItem = async (e) => {
