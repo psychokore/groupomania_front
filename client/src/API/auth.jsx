@@ -55,3 +55,17 @@ export async function deleteUserAccount (token) {
   })
   .catch (() => null)
 }
+
+export async function getRefreshToken (token) {
+  return axios.get(
+      `http://localhost:3000/api/auth/refresh`,
+      {headers: {
+          authorization : `Bearer ${token}`
+      },
+      }
+  )
+  .then((res) => {
+      return res.data
+    })
+  .catch (() => null)
+}
