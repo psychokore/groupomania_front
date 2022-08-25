@@ -50,7 +50,7 @@ const PostCard = ({post, onPublicationUpdate}) => {
 
 
      const loadMoreComment = (offset, allComments) => {
-        if (offset + 1 > totalPages && allComments.lenght != undefined) 
+        if (offset + 1 > totalPages && allComments.lenght !== undefined) 
             return <p className='show-more-comment' onClick={() => setOffset(offset + 1)}>Afficher des commentaires plus anciens</p>;
         else  
             return <p className='no-more-comment'>Fin des commentaires</p>;
@@ -73,10 +73,10 @@ const PostCard = ({post, onPublicationUpdate}) => {
 
     const likeDislike = (allLikes, userId) => {
         let like = allLikes.find (like => like.userId === userId) 
-        if (!like)
-            return <FontAwesomeIcon icon="fa-solid fa-heart" onClick={handleDislike}/>
-        else
+        if (like === undefined)
             return <FontAwesomeIcon icon="fa-regular fa-heart" onClick={handleLike} />
+        else
+            return <FontAwesomeIcon icon="fa-solid fa-heart" onClick={handleDislike}/>
                      
     }
 
