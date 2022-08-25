@@ -41,24 +41,25 @@ const deleteItem = async (e) => {
                             onChange={(e) => setTextUpdate(e.target.value)}
                             placeholder = {comment.content}
                         />
-                        <div className='button-update'>
+                        <div className='buttoncomment-update'>
                             <FontAwesomeIcon icon="fa-regular fa-circle-right" onClick={updateItem}/>
                         </div>
                     </div>   
-                )}
+                    )}
+                
+                </div>
                 {userId === comment.authorid && (
-                    <div className='update-container'>
+                    <div className='updatecomment-container'>
                         {isAdmin ? '':<FontAwesomeIcon icon="fa-regular fa-pen-to-square" onClick={() => setIsUpdated(!isUpdated)} />}
                         {isAdmin ? '':<FontAwesomeIcon icon="fa-regular fa-trash-can" onClick={deleteItem}/>}
                     </div>
                 )}
                 {isAdmin && (
-                    <div className='delete-container'>
+                    <div className='admincomment-container'>
                         <FontAwesomeIcon icon="fa-regular fa-pen-to-square" onClick={() => setIsUpdated(!isUpdated)} />
                         <FontAwesomeIcon icon="fa-regular fa-trash-can" onClick={deleteItem}/>
                     </div>
                 )}
-                </div>
             </div>
     );
 };
