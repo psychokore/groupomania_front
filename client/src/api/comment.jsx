@@ -13,9 +13,9 @@ export const getComments = ( postid, offset) => {
 
 
 
-export async function postComment (postid, comment, token){
+export async function postComment (commentid, comment, token){
     return await axios.post(
-    `http://localhost:3000/api/comment/${postid}`,
+    `http://localhost:3000/api/comment/${commentid}`,
     {
         comment
     },
@@ -30,9 +30,9 @@ export async function postComment (postid, comment, token){
   .catch (() => null)
 }
 
-export async function deleteComment (postid, token) {
+export async function deleteComment (commentid, token) {
     return await axios.delete(
-      `http://localhost:3000/api/comment/${postid}`, {
+      `http://localhost:3000/api/comment/${commentid}`, {
           headers: { Authorization : `Bearer ${token}`},
       }
     )
@@ -41,3 +41,20 @@ export async function deleteComment (postid, token) {
     })
     .catch (() => null)
   }
+
+  export async function updateComment(commentid, textUpdate, token){
+    return await axios.put(
+    `http://localhost:3000/api/comment/${commentid}`,
+    {
+        textUpdate
+    },
+    {headers: {
+        authorization : `Bearer ${token}`,
+    },
+    }
+  )
+  .then((res) => {
+    return res.data
+  })
+  .catch (() => null)
+}
