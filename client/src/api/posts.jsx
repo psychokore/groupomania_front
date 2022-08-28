@@ -2,7 +2,7 @@ import axios from 'axios';
 import { instance } from './axiosclient';
 
 export const getPosts = (offset) => {
-    return axios.get(
+    return instance.get(
         `http://localhost:3000/api/publication?offset=${offset}&limit=10`
         
     )
@@ -13,14 +13,13 @@ export const getPosts = (offset) => {
 }
 
 export async function publishPublication (content,image, token){
-    return await axios.post(
+    return await instance.post(
     `http://localhost:3000/api/publication`,
     {
         content,
         image
     },
     {headers: {
-        authorization : `Bearer ${token}`,
         'content-type' : 'multipart/form-data'
     },
     }
@@ -32,13 +31,12 @@ export async function publishPublication (content,image, token){
 }
 
 export async function updatePublication (postid, textUpdate, token){
-    return await axios.put(
+    return await instance.put(
     `http://localhost:3000/api/publication/${postid}`,
     {
         textUpdate
     },
     {headers: {
-        authorization : `Bearer ${token}`,
         'content-type' : 'multipart/form-data'
     },
     }
@@ -50,13 +48,8 @@ export async function updatePublication (postid, textUpdate, token){
 }
 
 export async function deletePublication (postid, token){
-    return await axios.delete(
-    `http://localhost:3000/api/publication/${postid}`,
-    {headers: {
-        authorization : `Bearer ${token}`,
-        'content-type' : 'multipart/form-data'
-    },
-    }
+    return await instance.delete(
+    `http://localhost:3000/api/publication/${postid}`
   )
   .then((res) => {
     return res.data

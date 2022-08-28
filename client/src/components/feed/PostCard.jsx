@@ -65,8 +65,8 @@ const PostCard = ({post, onPublicationUpdate}) => {
 
     const handleDislike = async (e) => {
         e.preventDefault();
-        const dislike = await deleteLike(postid, token);
-        onNewLike(dislike)
+        await deleteLike(postid, token);
+        onDislike()
         
     }
 
@@ -86,6 +86,10 @@ const PostCard = ({post, onPublicationUpdate}) => {
 
     const onNewLike = (like) => {
         setAllLikes([like, ...allLikes])
+    }
+
+    const onDislike = () => {
+        setAllLikes(allLikes.filter(like => like.userId !== userId ))
     }
 
     const updateItem = async (e) => {

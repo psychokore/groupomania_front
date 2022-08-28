@@ -1,12 +1,9 @@
 import axios from "axios";
+import { instance } from "./axiosclient";
 
 export const getLikes = (postid, token) => {
-    return axios.get(
-        `http://localhost:3000/api/like/${postid}/`,
-        {headers: {
-            authorization : `Bearer ${token}`
-        },
-        }
+    return instance.get(
+        `http://localhost:3000/api/like/${postid}/`
     )
     .then((res) => {
         return res.data
@@ -16,10 +13,8 @@ export const getLikes = (postid, token) => {
 
 
 export async function addLike (postid, token){
-    return await axios.post(
-    `http://localhost:3000/api/like/${postid}`, null, {
-        headers: { Authorization : `Bearer ${token}`},
-    }
+    return await instance.post(
+    `http://localhost:3000/api/like/${postid}`
   )
   .then((res) => {
     return res.data
@@ -28,10 +23,8 @@ export async function addLike (postid, token){
 }
 
 export async function deleteLike (postid, token) {
-  return await axios.delete(
-    `http://localhost:3000/api/like/${postid}`, {
-        headers: { Authorization : `Bearer ${token}`},
-    }
+  return await instance.delete(
+    `http://localhost:3000/api/like/${postid}`
   )
   .then((res) => {
     return res.data

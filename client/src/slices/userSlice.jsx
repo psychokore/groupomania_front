@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {instance} from '../api/axiosclient';
 
 
 export const userSlice = createSlice({
@@ -12,11 +13,13 @@ export const userSlice = createSlice({
     login: (state, action) => {
       state.userId = action.payload.userId;
       state.token = action.payload.token;
+      instance.defaults.headers.common['authorization'] = `Bearer ${action.payload.token}`
       state.isAdmin = action.payload.isAdmin;
     },
     logout: (state) => {
       state.userId = null;
       state.token = null;
+      instance.defaults.headers.common['authorization'] = null
       state.isAdmin = false;
     }
   }

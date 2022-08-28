@@ -1,7 +1,8 @@
 import axios from "axios";
+import { instance } from "./axiosclient";
 
 export async function postConnexion (email, password){
-    return await axios.post(
+    return await instance.post(
     `http://localhost:3000/api/auth/login`,
     {
         email,
@@ -16,7 +17,7 @@ export async function postConnexion (email, password){
 
 
 export async function postInscription (email, password, firstname, lastname){
-  return await axios.post(
+  return await instance.post(
   `http://localhost:3000/api/auth/signup`,
   {
       email,
@@ -31,12 +32,8 @@ export async function postInscription (email, password, firstname, lastname){
 
 
 export async function getUserData (token) {
-  return axios.get(
-      `http://localhost:3000/api/auth/data`,
-      {headers: {
-          authorization : `Bearer ${token}`
-      },
-      }
+  return instance.get(
+      `http://localhost:3000/api/auth/data`
   )
   .then((res) => {
       return res.data
@@ -45,10 +42,8 @@ export async function getUserData (token) {
 }
 
 export async function deleteUserAccount (token) {
-  return await axios.delete(
-    `http://localhost:3000/api/auth/delete`, {
-        headers: { Authorization : `Bearer ${token}`},
-    }
+  return await instance.delete(
+    `http://localhost:3000/api/auth/delete`
   )
   .then((res) => {
     return res.data
@@ -57,12 +52,8 @@ export async function deleteUserAccount (token) {
 }
 
 export async function getRefreshToken (token) {
-  return axios.get(
+  return instance.get(
       `http://localhost:3000/api/auth/refresh`,
-      {headers: {
-          authorization : `Bearer ${token}`
-      },
-      }
   )
   .then((res) => {
       return res.data

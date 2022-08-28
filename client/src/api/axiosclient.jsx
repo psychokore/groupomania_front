@@ -1,7 +1,7 @@
-/*
+
 
 import axios from "axios";
-import { useSelector } from "react-redux";
+
 
 
 
@@ -9,8 +9,5 @@ import { useSelector } from "react-redux";
     baseURL: 'http://localhost:3000/api'
 })
 
-const token = useSelector((state) => state.user.token)
 
-instance.defaults.headers.common['authorization'] = `Bearer ${token}`
 
-*/
