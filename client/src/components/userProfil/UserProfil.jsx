@@ -74,7 +74,7 @@ const UserProfil = () => {
 
                         <input className="button-profil" type='submit' value='Valider' />   
                     </form>
-                    <button className='cancel-button'>
+                    <button className='cancel-button' onClick={() => setIsUpdated(!isUpdated)}>
                         <FontAwesomeIcon icon="fa-solid fa-arrow-left-long" /> 
                         Annuler
                     </button>
