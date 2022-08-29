@@ -30,7 +30,7 @@ const PostModule = ({onNewPublication}) => {
             {
                 setImage(file)
             }
-            //ajouter l'erreur
+            
     }
     
     return (

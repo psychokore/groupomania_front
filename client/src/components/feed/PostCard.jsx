@@ -21,6 +21,7 @@ const PostCard = ({post, onPublicationUpdate}) => {
     const [showComment, setShowComment] = useState(false);
     const [isUpdated, setIsUpdated] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
+    
 
 
 
@@ -112,6 +113,8 @@ const PostCard = ({post, onPublicationUpdate}) => {
         e.preventDefault();
         const deletePost = await deletePublication(postid)
     }
+
+    
 
 
     return (
