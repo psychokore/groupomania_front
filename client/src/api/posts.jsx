@@ -1,9 +1,9 @@
-import axios from 'axios';
+
 import { instance } from './axiosclient';
 
 export const getPosts = (offset) => {
     return instance.get(
-        `http://localhost:3000/api/publication?offset=${offset}&limit=10`
+        `/publication?offset=${offset}&limit=10`
         
     )
     .then((res) => {
@@ -14,7 +14,7 @@ export const getPosts = (offset) => {
 
 export async function publishPublication (content,image){
     return await instance.post(
-    `http://localhost:3000/api/publication`,
+    `/publication`,
     {
         content,
         image
@@ -32,7 +32,7 @@ export async function publishPublication (content,image){
 
 export async function updatePublication (postid, textUpdate){
     return await instance.put(
-    `http://localhost:3000/api/publication/${postid}`,
+    `/publication/${postid}`,
     {
         textUpdate
     },
@@ -49,7 +49,7 @@ export async function updatePublication (postid, textUpdate){
 
 export async function deletePublication (postid){
     return await instance.delete(
-    `http://localhost:3000/api/publication/${postid}`
+    `/publication/${postid}`
   )
   .then((res) => {
     return res.data

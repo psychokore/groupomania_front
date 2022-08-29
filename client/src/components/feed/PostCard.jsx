@@ -83,6 +83,16 @@ const PostCard = ({post, onPublicationUpdate}) => {
         setAllComments([comment, ...allComments])
     }
 
+    const onCommentUpdate = (commentid, text) => {
+        setAllComments(comments => {
+            const comment = comments.find (comment => comment.commentid === commentid)
+            if (comment) {
+                comment.content = text
+            }
+            return comments
+        })
+    }
+
     const onNewLike = (like) => {
         setAllLikes([like, ...allLikes])
     }
@@ -156,7 +166,7 @@ const PostCard = ({post, onPublicationUpdate}) => {
                     <FontAwesomeIcon icon="fa-regular fa-comments" onClick={() => setShowComment(!showComment)} className={showComment ? 'active' : ''}/>   
                 </div>
            </div>
-           {showComment && allComments.map((comment) => (<Comments comment={comment} key={comment.commentid}/>))} 
+           {showComment && allComments.map((comment) => (<Comments comment={comment} key={comment.commentid} onCommentUpdate={onCommentUpdate}/>))} 
            {showComment && <>{loadMoreComment(offset, allComments)}</> }
            {showComment && <PostingComment post={post} onNewComment={onNewComment}/>}
         </div>

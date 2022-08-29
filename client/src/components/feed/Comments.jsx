@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 
 
-const Comments = ({comment}) => {
+const Comments = ({comment, onCommentUpdate}) => {
 const [isUpdated, setIsUpdated] = useState(false);
 const [textUpdate, setTextUpdate] = useState(null);
 
@@ -20,6 +20,7 @@ const updateItem = async (e) => {
     e.preventDefault();
     const updatedComment = await updateComment(commentid, textUpdate)
     setIsUpdated(false)
+    onCommentUpdate(commentid, textUpdate)
 }
 
 const deleteItem = async (e) => {

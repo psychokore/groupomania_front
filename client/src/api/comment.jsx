@@ -1,10 +1,10 @@
-import axios from "axios";
+
 import { instance } from "./axiosclient";
 
 
 export const getComments = ( postid, offset) => {
     return instance.get(
-        `http://localhost:3000/api/comment/${postid}/comment?offset=${offset}&limit=10`
+        `/comment/${postid}/comment?offset=${offset}&limit=10`
     )
     .then ((res) => {
         return res.data
@@ -16,7 +16,7 @@ export const getComments = ( postid, offset) => {
 
 export async function postComment (commentid, comment){
     return await instance.post(
-    `http://localhost:3000/api/comment/${commentid}`,
+    `/comment/${commentid}`,
     {
         comment
     },
@@ -29,7 +29,7 @@ export async function postComment (commentid, comment){
 
 export async function deleteComment (commentid) {
     return await instance.delete(
-      `http://localhost:3000/api/comment/${commentid}`
+      `/comment/${commentid}`
     )
     .then((res) => {
       return res.data
@@ -39,7 +39,7 @@ export async function deleteComment (commentid) {
 
   export async function updateComment(commentid, textUpdate){
     return await instance.put(
-    `http://localhost:3000/api/comment/${commentid}`,
+    `/comment/${commentid}`,
     {
         textUpdate
     }

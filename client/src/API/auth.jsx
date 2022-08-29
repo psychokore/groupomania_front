@@ -1,9 +1,9 @@
-import axios from "axios";
+
 import { instance } from "./axiosclient";
 
 export async function postConnexion (email, password){
     return await instance.post(
-    `http://localhost:3000/api/auth/login`,
+    `/auth/login`,
     {
         email,
         password
@@ -18,7 +18,7 @@ export async function postConnexion (email, password){
 
 export async function postInscription (email, password, firstname, lastname){
   return await instance.post(
-  `http://localhost:3000/api/auth/signup`,
+  `/auth/signup`,
   {
       email,
       password,
@@ -33,7 +33,7 @@ export async function postInscription (email, password, firstname, lastname){
 
 export async function getUserData () {
   return instance.get(
-      `http://localhost:3000/api/auth/data`
+      `/auth/data`
   )
   .then((res) => {
       return res.data
@@ -43,7 +43,7 @@ export async function getUserData () {
 
 export async function deleteUserAccount () {
   return await instance.delete(
-    `http://localhost:3000/api/auth/delete`
+    `/auth/delete`
   )
   .then((res) => {
     return res.data
@@ -53,7 +53,7 @@ export async function deleteUserAccount () {
 
 export async function getRefreshToken () {
   return instance.get(
-      `http://localhost:3000/api/auth/refresh`,
+      `/auth/refresh`,
   )
   .then((res) => {
       return res.data
