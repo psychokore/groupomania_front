@@ -31,7 +31,7 @@ export async function postInscription (email, password, firstname, lastname){
 }
 
 
-export async function getUserData (token) {
+export async function getUserData () {
   return instance.get(
       `http://localhost:3000/api/auth/data`
   )
@@ -41,7 +41,7 @@ export async function getUserData (token) {
   .catch (() => null)
 }
 
-export async function deleteUserAccount (token) {
+export async function deleteUserAccount () {
   return await instance.delete(
     `http://localhost:3000/api/auth/delete`
   )
@@ -51,7 +51,7 @@ export async function deleteUserAccount (token) {
   .catch (() => null)
 }
 
-export async function getRefreshToken (token) {
+export async function getRefreshToken () {
   return instance.get(
       `http://localhost:3000/api/auth/refresh`,
   )

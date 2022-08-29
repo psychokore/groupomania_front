@@ -25,13 +25,12 @@ const PostCard = ({post, onPublicationUpdate}) => {
 
 
     const postid = post.postid
-    const token = useSelector((state) => state.user.token)
     const userId = useSelector((state) => state.user.userId)
     const isAdmin = useSelector((state) => state.user.isAdmin)
 
     useEffect(() => {
         const loadComments = async () => {
-         const newComments = await getComments(postid, offset, token, userId);
+         const newComments = await getComments(postid, offset, userId);
          setAllComments([...allComments, ...newComments.data]);
          setTotalPages(newComments.pageCount)
         };
@@ -41,7 +40,7 @@ const PostCard = ({post, onPublicationUpdate}) => {
 
      useEffect(() => {
         const loadLikes = async () => {
-            const newLikes = await getLikes(postid,token);
+            const newLikes = await getLikes(postid);
             setAllLikes([...allLikes, ...newLikes.data])
          };
          loadLikes();
@@ -58,14 +57,14 @@ const PostCard = ({post, onPublicationUpdate}) => {
 
     const handleLike = async (e) => {
         e.preventDefault();
-        const addLikeHere = await addLike(postid, token);
+        const addLikeHere = await addLike(postid);
         onNewLike(addLikeHere)
         
     }
 
     const handleDislike = async (e) => {
         e.preventDefault();
-        await deleteLike(postid, token);
+        await deleteLike(postid);
         onDislike()
         
     }
@@ -94,14 +93,14 @@ const PostCard = ({post, onPublicationUpdate}) => {
 
     const updateItem = async (e) => {
         e.preventDefault();
-        const updatePost = await updatePublication(postid, textUpdate, token)
+        const updatePost = await updatePublication(postid, textUpdate)
         setIsUpdated(false)
         onPublicationUpdate(postid, textUpdate)
     }
 
     const deleteItem = async (e) => {
         e.preventDefault();
-        const deletePost = await deletePublication(postid, token)
+        const deletePost = await deletePublication(postid)
     }
 
 

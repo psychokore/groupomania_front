@@ -11,13 +11,13 @@ const PostingComment = ({post, onNewComment}) => {
 
     const userId = useSelector((state) => state.user.userId)
     const postid = post.postid
-    const token = useSelector((state) => state.user.token)
+    
     
 
     const handleComment = async (e) => {
         e.preventDefault();
 
-        const publishComment = await postComment(postid, comment, token)
+        const publishComment = await postComment(postid, comment)
         onNewComment(publishComment)
   
     }

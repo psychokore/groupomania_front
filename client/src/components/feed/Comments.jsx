@@ -10,7 +10,7 @@ const Comments = ({comment}) => {
 const [isUpdated, setIsUpdated] = useState(false);
 const [textUpdate, setTextUpdate] = useState(null);
 
-const token = useSelector((state) => state.user.token)
+
 const userId = useSelector((state) => state.user.userId)
 const isAdmin = useSelector((state) => state.user.isAdmin)
 const commentid = comment.commentid
@@ -18,13 +18,13 @@ const commentid = comment.commentid
 
 const updateItem = async (e) => {
     e.preventDefault();
-    const updatedComment = await updateComment(commentid, textUpdate, token)
+    const updatedComment = await updateComment(commentid, textUpdate)
     setIsUpdated(false)
 }
 
 const deleteItem = async (e) => {
     e.preventDefault();
-    const deletedComment = await deleteComment(commentid, token)
+    const deletedComment = await deleteComment(commentid)
 }
 
     return (

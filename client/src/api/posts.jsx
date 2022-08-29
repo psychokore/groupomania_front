@@ -12,7 +12,7 @@ export const getPosts = (offset) => {
     .catch (() => null)
 }
 
-export async function publishPublication (content,image, token){
+export async function publishPublication (content,image){
     return await instance.post(
     `http://localhost:3000/api/publication`,
     {
@@ -30,7 +30,7 @@ export async function publishPublication (content,image, token){
   .catch (() => null)
 }
 
-export async function updatePublication (postid, textUpdate, token){
+export async function updatePublication (postid, textUpdate){
     return await instance.put(
     `http://localhost:3000/api/publication/${postid}`,
     {
@@ -47,7 +47,7 @@ export async function updatePublication (postid, textUpdate, token){
   .catch (() => null)
 }
 
-export async function deletePublication (postid, token){
+export async function deletePublication (postid){
     return await instance.delete(
     `http://localhost:3000/api/publication/${postid}`
   )

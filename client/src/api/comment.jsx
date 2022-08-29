@@ -14,7 +14,7 @@ export const getComments = ( postid, offset) => {
 
 
 
-export async function postComment (commentid, comment, token){
+export async function postComment (commentid, comment){
     return await instance.post(
     `http://localhost:3000/api/comment/${commentid}`,
     {
@@ -27,7 +27,7 @@ export async function postComment (commentid, comment, token){
   .catch (() => null)
 }
 
-export async function deleteComment (commentid, token) {
+export async function deleteComment (commentid) {
     return await instance.delete(
       `http://localhost:3000/api/comment/${commentid}`
     )
@@ -37,7 +37,7 @@ export async function deleteComment (commentid, token) {
     .catch (() => null)
   }
 
-  export async function updateComment(commentid, textUpdate, token){
+  export async function updateComment(commentid, textUpdate){
     return await instance.put(
     `http://localhost:3000/api/comment/${commentid}`,
     {
