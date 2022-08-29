@@ -8,12 +8,14 @@ import { logout } from '../../slices/userSlice';
 const UserProfil = () => {
     const [userData, setUserData] = useState()
     const [isLoading, setIsLoading] = useState(true)
-    const token = useSelector((state) => state.user.token)
+    const [isUpdated, setIsUpdated] = useState(null)
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
     const dispatch = useDispatch()
 
     useEffect(() => {
         const loadUserData = async () => {
-            const user = await getUserData(token)
+            const user = await getUserData()
             setUserData({...user.data})   
             setIsLoading(false) 
         }
@@ -22,11 +24,16 @@ const UserProfil = () => {
 
     const deleteAccount = async (e) => {
         e.preventDefault();
-        const deleteUser = await deleteUserAccount(token)
+        const deleteUser = await deleteUserAccount()
         dispatch(logout())
 
     }
 
+    const updateProfil = async (e) => {
+        e.preventDefault();
+        const updatedUserData = await updateUserData()
+        setIsUpdated(false)
+    }
 
     return (
         <div className='profil-container'>
@@ -37,11 +44,36 @@ const UserProfil = () => {
                 <p className='data'>{userData.firstname}</p>
                 <p className='label'>Prénom</p>
                 <p className='data'>{userData.lastname}</p>
-                <p className='label'>Email</p>
-                <p className='data'>{userData.email}</p>
             </div>
             <button className='delete-profil' onClick={deleteAccount}>Supprimer votre profil</button>
+            <button className='update-profil'onClick={() => setIsUpdated(!isUpdated)} >Modifier votre profil</button>
             </>}
+            {isUpdated && (
+                <div className='update-profil'>
+                    <form action='' onSubmit={updateProfil} id='update-profil-form'>
+
+                        <label htmlFor="lastname">Nom</label>
+                        <input 
+                            className="textarea"
+                            type='text' 
+                            name='lastname'  
+                            onChange={(e) => setLastname(e.target.value)} 
+                            value={lastname}
+                        />
+        
+                        <label htmlFor="firstname">Prénom</label>
+                        <input 
+                            className="textarea"
+                            type='text' 
+                            name='firstname'  
+                            onChange={(e) => setFirstname(e.target.value)} 
+                            value={firstname}
+                        />
+
+                        <input className="button-profil" type='submit' value='Valider' />   
+                    </form>
+                </div>
+            )}
         </div>
     );
 };
