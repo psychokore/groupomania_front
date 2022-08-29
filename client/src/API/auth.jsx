@@ -60,3 +60,17 @@ export async function getRefreshToken () {
     })
   .catch (() => null)
 }
+
+export async function updateUserAccount (firstname, lastname) {
+  return await instance.put(
+    `/auth/update`,
+    {
+      firstname,
+      lastname
+    }
+  )
+  .then((res) => {
+    return res.data
+  })
+  .catch (() => null)
+}

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteUserAccount, getUserData } from '../../api/auth';
+import { useDispatch} from 'react-redux';
+import { deleteUserAccount, getUserData, updateUserAccount } from '../../api/auth';
 import { logout } from '../../slices/userSlice';
 
 
@@ -18,6 +19,7 @@ const UserProfil = () => {
             const user = await getUserData()
             setUserData({...user.data})   
             setIsLoading(false) 
+            setIsUpdated(false)
         }
         loadUserData()
     }, [])
@@ -31,14 +33,14 @@ const UserProfil = () => {
 
     const updateProfil = async (e) => {
         e.preventDefault();
-        const updatedUserData = await updateUserData()
+        const updatedUserData = await updateUserAccount(firstname, lastname)
         setIsUpdated(false)
     }
 
     return (
         <div className='profil-container'>
             <h1 className='data-title'> Mes informations</h1>
-            {isLoading ? <p>Chargement</p>: <>
+            {isUpdated === false && <>
             <div className='data-container'>
                 <p className='label'>Nom</p>
                 <p className='data'>{userData.firstname}</p>
@@ -72,6 +74,10 @@ const UserProfil = () => {
 
                         <input className="button-profil" type='submit' value='Valider' />   
                     </form>
+                    <button className='cancel-button'>
+                        <FontAwesomeIcon icon="fa-solid fa-arrow-left-long" /> 
+                        Annuler
+                    </button>
                 </div>
             )}
         </div>
