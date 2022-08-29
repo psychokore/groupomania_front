@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { postComment } from '../../api/comment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -9,9 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const PostingComment = ({post, onNewComment}) => {
     const [comment, setComment] = useState('');
 
-    const userId = useSelector((state) => state.user.userId)
-    const postid = post.postid
     
+    const postid = post.postid
     
 
     const handleComment = async (e) => {
