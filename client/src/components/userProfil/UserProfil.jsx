@@ -47,37 +47,41 @@ const UserProfil = () => {
                 <p className='label'>Prénom</p>
                 <p className='data'>{userData.lastname}</p>
             </div>
-            <button className='delete-profil' onClick={deleteAccount}>Supprimer votre profil</button>
-            <button className='update-profil'onClick={() => setIsUpdated(!isUpdated)} >Modifier votre profil</button>
+            <div className='profil-button'>
+                <button className='update-profil'onClick={() => setIsUpdated(!isUpdated)} >Modifier votre profil</button>
+                <button className='delete-profil' onClick={deleteAccount}>Supprimer votre profil</button>
+            </div>
             </>}
             {isUpdated && (
-                <div className='update-profil'>
-                    <form action='' onSubmit={updateProfil} id='update-profil-form'>
+                <div className='update-profil-container'>
+                    <form action='' onSubmit={updateProfil} id='update-profil-form' className='data-container'>
 
-                        <label htmlFor="lastname">Nom</label>
+                        <label htmlFor="lastname" className='label'>Nom</label>
                         <input 
-                            className="textarea"
+                            className='data'
                             type='text' 
                             name='lastname'  
                             onChange={(e) => setLastname(e.target.value)} 
                             value={lastname}
+                            placeholder={userData.firstname}
                         />
         
-                        <label htmlFor="firstname">Prénom</label>
+                        <label htmlFor="firstname" className='label'>Prénom</label>
                         <input 
-                            className="textarea"
+                            className='data'
                             type='text' 
                             name='firstname'  
                             onChange={(e) => setFirstname(e.target.value)} 
                             value={firstname}
+                            placeholder={userData.lastname}
                         />
 
-                        <input className="button-profil" type='submit' value='Valider' />   
+                        <input className="button-profil" type='submit' value='Valider' /> 
+                        <button className='cancel-button' onClick={() => setIsUpdated(!isUpdated)}>
+                            <FontAwesomeIcon icon="fa-solid fa-arrow-left-long" /> 
+                            Annuler
+                        </button>  
                     </form>
-                    <button className='cancel-button' onClick={() => setIsUpdated(!isUpdated)}>
-                        <FontAwesomeIcon icon="fa-solid fa-arrow-left-long" /> 
-                        Annuler
-                    </button>
                 </div>
             )}
         </div>
