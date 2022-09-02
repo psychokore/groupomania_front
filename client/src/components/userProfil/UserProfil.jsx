@@ -43,9 +43,9 @@ const UserProfil = () => {
             {isUpdated === false && <>
             <div className='data-container'>
                 <p className='label'>Nom</p>
-                <p className='data'>{userData.firstname}</p>
-                <p className='label'>Prénom</p>
                 <p className='data'>{userData.lastname}</p>
+                <p className='label'>Prénom</p>
+                <p className='data'>{userData.firstname}</p>
             </div>
             <div className='profil-button'>
                 <button className='update-profil'onClick={() => setIsUpdated(!isUpdated)} >Modifier votre profil</button>
@@ -63,7 +63,7 @@ const UserProfil = () => {
                             name='lastname'  
                             onChange={(e) => setLastname(e.target.value)} 
                             value={lastname}
-                            placeholder={userData.firstname}
+                            placeholder={userData.lastname}
                         />
         
                         <label htmlFor="firstname" className='label'>Prénom</label>
@@ -73,7 +73,7 @@ const UserProfil = () => {
                             name='firstname'  
                             onChange={(e) => setFirstname(e.target.value)} 
                             value={firstname}
-                            placeholder={userData.lastname}
+                            placeholder={userData.firstname}
                         />
 
                         <input className="button-profil" type='submit' value='Valider' /> 
