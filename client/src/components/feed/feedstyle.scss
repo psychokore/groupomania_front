@@ -75,7 +75,12 @@
             cursor: pointer;
         }
     }
-
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: auto;
+        display: block;
+    }
     .delete-container {
         text-align: right;
         font-size: 20px;
