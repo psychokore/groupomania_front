@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {postInscription, postConnexion} from "../../api/auth";
+import {postInscription, postConnexion, getRefreshToken} from "../../api/auth";
 import {useNavigate} from 'react-router-dom';
 
 import { useDispatch } from "react-redux";
