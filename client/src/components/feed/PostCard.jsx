@@ -13,7 +13,7 @@ import { deletePublication, updatePublication} from '../../api/posts'
 
 
 
-const PostCard = ({post, onPublicationUpdate}) => {
+const PostCard = ({post, onPublicationUpdate, onPublicationDelete}) => {
     const [allComments, setAllComments] = useState([])
     const [allLikes, setAllLikes] = useState([])
     const [offset, setOffset] =  useState(0)
@@ -94,6 +94,10 @@ const PostCard = ({post, onPublicationUpdate}) => {
         })
     }
 
+    const onCommentDelete = (commentid) => {
+        setAllComments (allComments.filter(comment => comment.commentid !== commentid))
+    }
+
     const onNewLike = (like) => {
         setAllLikes([like, ...allLikes])
     }
@@ -112,6 +116,7 @@ const PostCard = ({post, onPublicationUpdate}) => {
     const deleteItem = async (e) => {
         e.preventDefault();
         const deletePost = await deletePublication(postid)
+        onPublicationDelete()
     }
 
     
@@ -169,7 +174,7 @@ const PostCard = ({post, onPublicationUpdate}) => {
                     <FontAwesomeIcon icon="fa-regular fa-comments" onClick={() => setShowComment(!showComment)} className={showComment ? 'active' : ''}/>   
                 </div>
            </div>
-           {showComment && allComments.map((comment) => (<Comments comment={comment} key={comment.commentid} onCommentUpdate={onCommentUpdate}/>))} 
+           {showComment && allComments.map((comment) => (<Comments comment={comment} key={comment.commentid} onCommentUpdate={onCommentUpdate} onCommentDelete={onCommentDelete}/>))} 
            {showComment && <>{loadMoreComment(offset, allComments)}</> }
            {showComment && <PostingComment post={post} onNewComment={onNewComment}/>}
         </div>

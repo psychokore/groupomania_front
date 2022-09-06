@@ -33,8 +33,23 @@ const UserProfil = () => {
 
     const updateProfil = async (e) => {
         e.preventDefault();
-        const updatedUserData = await updateUserAccount(firstname, lastname)
+        await updateUserAccount(firstname, lastname)
+        onProfilUpdate(firstname, lastname)
         setIsUpdated(false)
+
+    }
+
+    const onProfilUpdate = (firstname, lastname) => {
+        setUserData(userData => {
+            if (firstname !== userData.firstname) {
+                userData.firstname = firstname
+            }
+            if (lastname !== userData.lastname) {
+                userData.lastname = lastname
+            }
+            return userData
+        })
+
     }
 
     return (

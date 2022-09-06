@@ -52,12 +52,16 @@ const Feed = () => {
         })
     }
 
+    const onPublicationDelete = (postid) => {
+        setAllPosts(allPosts.filter(publication => publication.postid !== postid))
+    }
+
 
     return (
         <>
         <div className='feed-container' onScroll={handleScroll}>
             {allPosts.map((post) => (
-            <PostCard post={post} key={post.postid} onPublicationUpdate={onPublicationUpdated} />
+            <PostCard post={post} key={post.postid} onPublicationUpdate={onPublicationUpdated} onPublicationDelete={onPublicationDelete}/>
             ))}
             {loading && <div className='loading'>Loading ...</div>}  
         </div>
