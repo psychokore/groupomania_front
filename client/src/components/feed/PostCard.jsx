@@ -21,6 +21,7 @@ const PostCard = ({post, onPublicationUpdate, onPublicationDelete}) => {
     const [showComment, setShowComment] = useState(false);
     const [isUpdated, setIsUpdated] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
+    const [image, setImage] = useState(null)
     
 
 
@@ -108,17 +109,24 @@ const PostCard = ({post, onPublicationUpdate, onPublicationDelete}) => {
 
     const updateItem = async (e) => {
         e.preventDefault();
-        const updatePost = await updatePublication(postid, textUpdate)
+        const updatePost = await updatePublication(postid, textUpdate, image)
         setIsUpdated(false)
-        onPublicationUpdate(postid, textUpdate)
+        onPublicationUpdate(postid, textUpdate, updatePost.imageurl)
     }
 
     const deleteItem = async (e) => {
         e.preventDefault();
         const deletePost = await deletePublication(postid)
-        onPublicationDelete()
+        onPublicationDelete(postid)
     }
 
+    const handleImage = (file) => {
+        if (['image/png', 'image/jpeg', 'image/gif', 'image/jpg'].includes(file.type))
+            {
+                setImage(file)
+            }
+            
+    }
     
 
 
@@ -141,12 +149,20 @@ const PostCard = ({post, onPublicationUpdate, onPublicationDelete}) => {
                             onChange={(e) => setTextUpdate(e.target.value)}
                             placeholder = {post.content}
                         />
+                        <input 
+                            className='post-image'
+                            type='file'
+                            id='image'
+                            name='image'
+                            accept='image/png, image/jpeg, image/gif, image/jpg'
+                            onChange={(e) => handleImage(e.target.files[0])}
+                        />
                         <div className='button-update'>
                             <FontAwesomeIcon icon="fa-regular fa-circle-right" onClick={updateItem}/>
                         </div>
                     </div>   
                 )}
-                { post.imageurl !== null && <img classNanme = "post-image" src={post.imageurl} alt=''/> }
+                { post.imageurl !== null && <img className = "post-image" src={post.imageurl} alt=''/> }
                 {userId === post.authorid && (
                     <div className='update-container'>
                         {isAdmin ? '':<FontAwesomeIcon icon="fa-regular fa-pen-to-square" onClick={() => setIsUpdated(!isUpdated)} />}

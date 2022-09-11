@@ -26,7 +26,7 @@ const updateItem = async (e) => {
 const deleteItem = async (e) => {
     e.preventDefault();
     await deleteComment(commentid)
-    onCommentDelete()
+    onCommentDelete(commentid)
 }
 
 

@@ -21,13 +21,18 @@ export const userSlice = createSlice({
       state.token = null;
       instance.defaults.headers.common['authorization'] = null
       state.isAdmin = false;
+    },
+    refreshData: (state, action) => {
+      state.token = action.payload.token;
+      instance.defaults.headers.common['authorization'] = `Bearer ${action.payload.token}`
+      state.isAdmin = action.payload.isAdmin;
     }
   }
 })
 
 
 
-export const { login, logout} = userSlice.actions
+export const { login, logout, refreshData} = userSlice.actions
 
 export const selectIsUserConnected = (state) => state.user.token !== null
 export const selectUser = (state) => state.user.userId !== null

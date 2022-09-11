@@ -42,11 +42,14 @@ const Feed = () => {
         setAllPosts([publication, ...allPosts])
     }
 
-    const onPublicationUpdated = (postid, text) => {
+    const onPublicationUpdated = (postid, text, image) => {
         setAllPosts(publications => {
             const publication = publications.find (publication => publication.postid === postid)
             if (publication) {
                 publication.content = text
+                if (image) {
+                    publication.imageurl = image
+                }
             }
             return publications
         })

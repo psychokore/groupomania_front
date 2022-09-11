@@ -25,7 +25,6 @@ const PostModule = ({onNewPublication}) => {
 
     
     const handleImage = (file) => {
-        console.log(file)
         if (['image/png', 'image/jpeg', 'image/gif', 'image/jpg'].includes(file.type))
             {
                 setImage(file)

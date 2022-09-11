@@ -30,11 +30,12 @@ export async function publishPublication (content,image){
   .catch (() => null)
 }
 
-export async function updatePublication (postid, textUpdate){
+export async function updatePublication (postid, textUpdate, image){
     return await instance.put(
     `/publication/${postid}`,
     {
-        textUpdate
+        textUpdate,
+        image
     },
     {headers: {
         'content-type' : 'multipart/form-data'
