@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/groupomania_front/static/css/main.f1844c21.css",
+    "main.js": "/groupomania_front/static/js/main.0b0d3020.js",
+    "static/media/Lato-Regular.ttf": "/groupomania_front/static/media/Lato-Regular.9d883d540ee2b4de8024.ttf",
+    "index.html": "/groupomania_front/index.html",
+    "main.f1844c21.css.map": "/groupomania_front/static/css/main.f1844c21.css.map",
+    "main.0b0d3020.js.map": "/groupomania_front/static/js/main.0b0d3020.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1844c21.css",
+    "static/js/main.0b0d3020.js"
+  ]
+}
