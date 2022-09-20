@@ -4,7 +4,8 @@
   Ouvrir le dossier client dans la console et saisir npm install
 
   Ajouter, dans le dossier client, le fichier .env comprenant la variable:
-REACT_APP_API_URL (celle-ci doit se terminer par /api )
+  
+    REACT_APP_API_URL (celle-ci doit se terminer par /api )
 
 2. Lancement du projet
 
