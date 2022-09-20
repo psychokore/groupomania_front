@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch} from 'react-redux';
 import { deleteUserAccount, getUserData, updateUserAccount } from '../../api/auth';
 import { logout } from '../../slices/userSlice';
+import './userProfilstyle.scss';
 
 
 const UserProfil = () => {

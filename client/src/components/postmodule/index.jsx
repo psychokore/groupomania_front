@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { publishPublication } from '../../api/posts';
+import './postmodulestyle.scss';
 
 
 

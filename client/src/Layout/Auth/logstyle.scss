@@ -34,7 +34,7 @@
         font-size: 1em;
     }
     .textarea {
-        background: $color-secondary;
+        background: #FFFF;
         height: 30px;
         border-radius: 15px;
         border: none;
@@ -47,7 +47,7 @@
 
 .button-container {
     width: 150px;
-    border-top: 1px darken($color-accent, 30%) solid;
+    border-top: 1px darken(#C4C4C4, 30%) solid;
 }
 
 .logbutton {
@@ -65,14 +65,14 @@
 }
 
 .button{
-        color: $color-secondary;
-        background: $color-primary;
+        color: #FFFF;
+        background: #1A2340;
         border-radius: 10px;
         margin: auto;
         width: 130px;
         height: 40px;
         margin-bottom: 10px;
-        color: $color-secondary;
+        color: #FFFF;
         font-size: 1em;
         border: none;
     }
@@ -107,7 +107,7 @@ img {
         font-size: 1em;
     }
     .textarea {
-        background: $color-secondary;
+        background: #FFFF;
         height: 30px;
         border-radius: 15px;
         border: none;

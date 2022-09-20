@@ -1,5 +1,5 @@
 .postmodule-container {
-    background-color: $color-secondary;
+    background-color: #FFFF;
     width: 55%;
     justify-content: center;
     align-content: center;
@@ -16,7 +16,7 @@
     
     border-radius: 30px;
     border: solid black 1px;
-    box-shadow: 5px 5px 13px -2px $color-accent;
+    box-shadow: 5px 5px 13px -2px #C4C4C4;
     margin: 130px auto;
     height: 300px;
     h1{
@@ -44,13 +44,13 @@
     padding-left: 10px;
     border-radius: 20px;
     border: none;
-    background-color: lighten($color-accent, 20%);
+    background-color: lighten(#C4C4C4, 20%);
     margin-bottom: 30px;
     justify-content: first baseline;
 }
 
 .post-button {
-    background-color: lighten($color-accent, 10%);
+    background-color: lighten(#C4C4C4, 10%);
     border-radius: 20px;
     border: none;
     font-weight: bold;

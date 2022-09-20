@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
+import './logstyle.scss';
 
 
 const Log = ( {signup, signin} ) =>{

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch } from 'react-redux';
 import { logout } from '../../slices/userSlice';
 import { useNavigate } from 'react-router-dom';
+import './navbarstyle.scss';
 
 const NavBar = () => {
 

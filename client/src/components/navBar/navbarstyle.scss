@@ -5,7 +5,7 @@
     align-items: center;
     height: 180px;
     padding-bottom: 40px;
-    background: $color-primary;
+    background: #1A2340;
 }
 
 
@@ -20,7 +20,7 @@
 }
 
 .fa-house{
-    color: $color-secondary;
+    color: #FFFF;
     align-self: center;
     justify-self: flex-start;
     font-size: 1.3em;
@@ -43,7 +43,7 @@
         justify-self: left;
         align-self: center;
         font-weight: bold;
-        color: $color-secondary;
+        color: #FFFF;
         font-size: 1em;
         text-align: center;
         cursor: pointer;
@@ -55,7 +55,7 @@
         justify-self: flex-end;
         align-self:center ;
         font-weight: bold;
-        color: $color-secondary;
+        color: #FFFF;
         font-size: 1em;
         text-align: center;
         cursor: pointer;

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getPosts } from '../../api/posts.jsx';
+import './feedstyle.scss';
 
 import PostCard from './PostCard';
 import PostModule from '../postmodule/index.jsx';

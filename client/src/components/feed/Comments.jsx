@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { updateComment, deleteComment} from '../../api/comment';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import './commentstyle.scss';
 
 
 
